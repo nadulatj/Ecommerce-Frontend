@@ -1,0 +1,22 @@
+.ecart-section {
+    margin-top: 40px;
+    @media only screen and (max-width: 767px) {
+        margin-top: 18px;
+    }
+}
+
+.echeckout-section {
+    margin-top: 20px;
+    @media only screen and (max-width: 767px) {
+        margin-top: 18px;
+    }
+}
+
+.echeckout-title {
+    @include font-style(22px, $weight-medium, $color-black);
+    line-height: 33px;
+    @media only screen and (max-width: 767px) {
+        font-size: 18px;
+        line-height: 27px;
+    }
+}

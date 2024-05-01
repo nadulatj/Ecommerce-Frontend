@@ -1,0 +1,71 @@
+
+
+
+<!-- Search Section Start -->
+<div class="esearch mt-top">
+    <form [formGroup]="searchForm">
+    <div class="container esearch-group">
+      <button class="esearch-btn__category" id="category-btn">
+        <span class="esearch-btn__category-text">{{'categories'|translate}}</span>
+        <svg class="icon esearch-btn__category-icon" (click)="opencategory()">
+          <use xlink:href="../assets/Icons/sprite.svg#menu"></use>
+        </svg>
+        <svg class="icon esearch-btn__category-cicon hide">
+          <use xlink:href="../assets/Icons/sprite.svg#close"></use>
+        </svg>
+
+
+        <!-- category Icon Click Modal Open Start -->
+
+        <div class="ecategory-popover" [ngStyle]="{'display':is_category_open?'block':'none'}">
+            <div *ngFor="let catergory of catergoryData; let i = index" (click)="setIndex(i,catergory.id,'')" class="ecategory__list">
+                <a  class="ecategory__list-link" [class.active]="selectedIndex === i">{{catergory.name}}</a>
+              </div>
+        </div>
+
+        <!-- ecategory Icon Click Modal Open End -->
+
+      </button>
+      <input  formControlName="search" type="text" class="esearch-input" placeholder="Search Items">
+       <div class="esearch-btn__group">
+        <!--<button class="esearch-btn__sort" id="sort-btn"> -->
+          <!-- <svg class="icon esearch-btn__sort-icon">
+            <use xlink:href="../assets/Icons/sprite.svg#filter"></use>
+          </svg>
+          <span class="esearch-btn__sort-text">{{'sortBy'|translate}}</span> -->
+
+          <!-- Sort Icon Click Modal Open Start -->
+
+          <div class="esort-popover">
+            <p class="esort-popover__title">{{'sortBy'|translate}}</p>
+            <ul class="esort-popover__list">
+              <li class="esort-popover__item">
+                <a href="#" class="esort-popover__link">Sort by latest</a>
+              </li>
+              <li class="esort-popover__item">
+                <a href="#" class="esort-popover__link">Sort by Popularity</a>
+              </li>
+              <li class="esort-popover__item">
+                <a href="#" class="esort-popover__link">Sort by Price: low to high</a>
+              </li>
+              <li class="esort-popover__item">
+                <a href="#" class="esort-popover__link">Sort by Price: high to low</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Sort Icon Click Modal Open End -->
+        <!-- </button> -->
+
+        <button (click)="searchData()" class="esearch-btn__search">
+          <svg class="icon esearch-btn__search-icon">
+            <use xlink:href="../assets/Icons/sprite.svg#search"></use>
+          </svg>
+          <span class="esearch-btn__search-text">{{'search'|translate}}</span>
+        </button>
+      </div>
+    </div>
+    </form>
+  </div>
+
+  <!-- Search Section End -->

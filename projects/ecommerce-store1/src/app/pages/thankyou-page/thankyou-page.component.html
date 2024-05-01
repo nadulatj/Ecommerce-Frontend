@@ -1,0 +1,75 @@
+
+
+<app-header  (checkForCartChange1)="checkForCartChange()" [store_data]="store_data">
+
+</app-header>
+
+
+
+<app-item-search [store_data]="store_data"></app-item-search>
+
+  <section class="econtent">
+
+    <div class="container">
+      
+
+        <div class="d-flex justify-content-center">
+            
+            <img class="text-center" style="width: 10%;" src="../../../assets/img/thankyou.png"/>
+        
+        </div>
+        <div class="text-center">
+            <!-- <img style="width: 10%;" src="../../../assets/img/thankyou.png"/> -->
+            <p class="thankyou-text">Your order #{{order_id}} successfully placed. you’ll</p>
+            <p class="thankyou-text">have your product soon.</p>
+        </div>
+    </div>
+
+
+    <div  class="container d-flex justify-content-center summary">
+      
+      
+      <div style="width: 100%;padding-top: 66px;">
+          <!-- <img style="width: 10%;" src="../../../assets/img/thankyou.png"/> -->
+          <p class="summary-heading d-flex justify-content-between"><span>Order Summary</span><span class="order_status">{{this.order_details['data']['order_status_visualize_name']}}</span></p>
+          <p class="order_data">Order Number: #{{order_id}}</p>
+          <p class="order_data">{{this.order_details['data']['created_on'] | date:'medium'}} </p>
+          <p class="order_data">Order From : {{this.order_details['data']['payment_type']=="cash_on_delivery"?"Cash on Delivery":"Bank Deposit"}} </p>
+          <div style=" border-top: 1px solid;border-bottom: 1px solid;">
+            <ul *ngFor="let item of this.order_details['data']['details']; let i = index"  style="padding-left: 0;padding-right: 0;padding-top: 21px;padding-bottom: 21px;" class="scart-popover__list2 escrollbar">
+              <li class="scart-popover__item">
+                <div class="scart-popover__item-left">
+                  <img src="{{image_base_path}}{{item.image}}" alt="item Img" class="scart-popover__img">
+                  <div class="scart-popover__details">
+                    <p class="scart-popover__details-title">{{item.name}}</p>
+                    <p class="scart-popover__details-price"><span class="scart-popover__details-count">QTY. {{item.quantity}}</span></p>
+                  </div>
+                </div>
+                  &nbsp;
+                <p class="scart-popover__details-price">{{this.order_details['data']['currency']}} {{item.net_amount*item.quantity}}</p>
+              </li>
+            </ul>
+          </div>
+
+          <div style="padding-top: 20px;" class="d-flex justify-content-between">
+            <p class="total_styles">Sub Total</p>
+            <p class="total_value_styles">{{this.order_details['data']['currency']}}   <span>{{currencyFormatter(this.order_details['data']['gross_amount'])}}</span></p>
+          </div>
+
+          <div style="border-bottom: 1px solid;" class="d-flex justify-content-between">
+            <p class="total_styles">Delivery Charges</p>
+            <p class="total_value_styles">{{this.order_details['data']['currency']}} <span>{{currencyFormatter(this.order_details['data']['delivery_amount'])}}</span></p>
+          </div>
+
+          <div style="padding-top: 20px;" class="d-flex justify-content-between">
+            <p class="total_styles">Grand Total</p>
+            <p class="total_value_styles">{{this.order_details['data']['currency']}} <span>{{currencyFormatter(this.order_details['data']['net_amount'])}}</span></p>
+          </div>
+
+
+      </div>
+  </div>
+
+  </section>
+
+  <app-footer [store_data]="store_data"></app-footer>

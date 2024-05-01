@@ -1,0 +1,123 @@
+.thankyou-text{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 120%;
+/* or 19px */
+
+text-align: center;
+
+color: #384C83;
+}
+
+.order_status{
+
+
+width: 101px;
+height: 32px;
+justify-content: center;
+align-items: center;
+padding: 2px;
+gap: 10px;
+
+padding: 5px;
+
+background: #DEFBFF;
+border-radius: 5px;
+
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+
+
+color: #0064FA;
+}
+
+.summary{
+   
+    width: 38%;
+}
+
+.summary-heading{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19.2px;
+}
+
+.summary-details{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.8px;
+}
+
+.total_styles{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 120%;
+/* identical to box height, or 17px */
+
+
+color: #384C83;
+
+}
+.total_value_styles{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 120%;
+/* or 19px */
+
+
+color: #1F2F5B;
+}
+
+.order_data{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 120%;
+/* identical to box height, or 17px */
+
+
+color: #242424;
+}
+
+@media only screen and (max-width: 1100px) {
+    .summary{
+   
+        width: 55%;
+    }
+    
+    }
+
+
+
+    @media only screen and (max-width: 500px) {
+        .summary{
+   
+            width: 100%;
+        }
+        }
+
+
+@media only screen and (max-width: 415px) {
+    .thankyou-text{
+        font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 120%;
+    /* or 19px */
+    
+    text-align: center;
+    
+    color: #384C83;
+    }
+    }

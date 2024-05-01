@@ -1,0 +1,101 @@
+.ecategory {
+    padding-top: 40px;
+    padding-bottom: 89px;
+    @media only screen and (max-width: 767px) {
+        padding-top: 21px;
+        padding-bottom: 53px;
+    }
+
+    &-title {
+        @include font-style(16px, $weight-regular, $color-black);
+        line-height: 24px;
+        margin-bottom: 25px;
+        @media only screen and (max-width: 767px) {
+            display: none;
+        }
+    }
+
+    &__list {
+        margin-bottom: 0px;
+        @include flex-container(column, null, flex-start, null);
+        
+        &-link {
+            @include font-style(16px, $weight-regular, $color-dark-blue);
+            line-height: 24px;
+            padding: 13px 23px;
+            border: 1px solid $color-gray-3;
+            transition: all 0.5s;
+
+            @media only screen and (max-width: 767px) {
+                font-size: 14px;
+                line-height: 20px;
+                padding: 10px 20px;
+            }
+            
+            &:not(:last-child) {
+                border-bottom: 0px;
+            }
+
+            &:hover {
+                background-color: $color-gray-6;
+                color: $color-dark-blue;
+            }
+
+            &.active {
+                background-color: $color-orange;
+                color: $color-white;
+                border-color: $color-orange;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width:768px)  {
+    .ecategory__mob {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .ecategory__mob {
+        @include flex-container(row, null, space-between, center);
+        margin-bottom: 16px;
+
+        &-title {
+            @include font-style(18px, $weight-medium, $color-dark-blue);
+            margin-bottom: 0px;
+        }
+    }
+    .ecategory__close {
+       
+        &-icon {
+            width: 16px;
+            height: 16px;
+            fill: $color-gray-1;
+        }
+    }
+}
+
+.ecategory__grid {
+    display: grid;
+    grid-row-gap: 25px;
+    grid-column-gap: 20px;
+
+    @media only screen and (min-width: 992px) {
+        grid-template-columns: repeat(3, 1fr);
+        grid-row-gap: 25px;
+        grid-column-gap: 20px;
+    }
+
+    @media only screen and (max-width: 991px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-row-gap: 13px;
+        grid-column-gap: 10px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .sidebar-mobile {
+        display: none;
+    }
+}

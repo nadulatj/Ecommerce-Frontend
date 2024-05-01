@@ -1,0 +1,146 @@
+.emodal {
+    @media only screen and (min-width: 992px) {
+        .modal-lg.emodal-lg {
+            max-width: 686px;
+            height: 50vh;
+        }
+    }
+
+    &-body {
+       .modal-frimi {
+        padding-top: 25px;
+        padding-bottom: 130px;
+            .echeckout-form__input{
+                height: 17px;
+            }    
+
+            .ebtn__lg--tertiary {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                margin-top: 15px;
+            }
+       } 
+    }
+
+    &-content {
+        padding: 30px 36px;
+        @media only screen and (max-width: 767px) {
+            padding: 20px 25px;
+        }
+
+        .ebtn__pay {
+            padding: 10px 23px;
+            color: $color-text-3;
+            background-color: $color-pay-btn;
+            border-radius: 5px;
+            box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.1);
+            @include flex-container(row, null, space-between, center);
+            width: 137px;
+            border: none;
+            transition: all 0.5s;
+            &-text {
+                @include font-style(16px, $weight-medium, $color-text-3);
+            }
+
+            &-icon {
+                width: 16px;
+                height: 18px;
+            }
+
+            &:hover {
+                opacity: .8;
+            }
+        }
+    }
+
+    &-header {
+        @include flex-container(row, null, space-between, center);
+        padding: 0px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid $color-border-3;
+    }
+
+    &-title {
+        @include font-style(20px, $weight-medium, $color-black);
+        margin-bottom: 0;
+        line-height: 30px;
+    }
+    
+    &-close {
+        border: none;
+        background-color: transparent;
+        transition: all 0.5s;
+        &__icon {
+            width: 23px;
+            height: 23px;
+            fill: $color-dark-blue;
+        }   
+
+        &:hover{
+            opacity: .8;
+        }
+    }
+
+    &-body {
+        padding: 0px;
+        padding-top: 20px;
+        &__title {
+            @include font-style(18px, $weight-medium, $color-text);
+            line-height: 33px;
+            margin-bottom: 0px;
+        }
+
+        .echeckout-form {
+            margin-top: 15px;
+            &__label {
+                @include font-style(14px, $weight-regular, $color-text-2);
+                line-height: 26px;
+                margin-bottom: 6px;
+            }
+
+            .form-row {
+                margin-top: 25px;
+                & > [class*=col-]:nth-child(odd) {
+                    padding-right: 5px;
+                }
+            }
+
+            &__input {
+                border-radius: 4px;
+                height: 37px;
+                border-color: $color-border-4;
+                color: $color-dark-blue;
+                &::placeholder {
+                    color: $color-border-4;
+                    opacity: 1;
+                 }
+                   
+                 &:-ms-input-placeholder {
+                     color: $color-border-4;
+                   }
+                   
+                 &::-ms-input-placeholder {
+                    color: $color-border-4;
+                 }
+            }
+
+            &__addon { 
+                position: relative;
+                &-img {
+                    position: absolute;
+                    padding: 10px;
+                    pointer-events: none;
+                    width: auto;
+                    height: 38px;
+                    object-fit: cover;
+                    right: 0px;
+                }
+            }
+
+            &__footer {
+                @include flex-container(row, null, flex-end, center);
+                margin-top: 25px;
+            }
+        }
+    }
+}

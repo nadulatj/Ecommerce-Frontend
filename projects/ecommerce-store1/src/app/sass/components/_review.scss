@@ -1,0 +1,156 @@
+.ereview {
+    &-nav {
+        margin-top: 40px;
+        @media only screen and (max-width: 767px) {
+            margin-top: 29px;
+        }
+        &__item {
+            &:not(:last-child) {
+                margin-right: 10px;
+                @media only screen and (max-width: 767px) {
+                    margin-right: 8px;
+                    margin-bottom: 8px;
+                }
+            }
+        }
+
+        &__link {
+            padding: 8px 21.5px;
+            background-color: $color-bg-2;
+            border-radius: 5px;
+            @include font-style(14px, $weight-regular, $color-dark-blue);
+            line-height: 21px;
+            letter-spacing: -0.3px;
+            border: 1px solid $color-bg-2;
+            transition: all 0.5s;
+            @media only screen and (max-width: 767px) {
+                padding: 8px 15.5px;
+                font-size: 12px;
+                line-height: 18px;
+            }
+
+            &.active {
+                background-color: $color-dark-blue;
+                color: $color-white;
+                &:hover {
+                    background-color: $color-dark-blue;
+                    color: $color-white;
+                }
+            }
+
+            &:hover {
+                color: $color-dark-blue;
+                // border: 1px solid $color-dark-blue;
+                background-color: $color-bg-3;
+            }
+        }
+    }
+}
+
+.ereview-content {
+    &__item {
+        padding-top: 40px;
+        @media only screen and (max-width: 767px) {
+            padding-top: 30px;
+        }
+    }
+}
+
+.ereview-info {
+    @include flex-container(column, null, flex-start, flex-start);
+    &__number {
+        @include font-style(38px, $weight-regular, $color-rating);
+        line-height: 57px;
+        letter-spacing: -0.3px;
+        margin-bottom: 0px;
+        @media only screen and (max-width: 767px) {
+            font-size: 30px;
+            line-height: 45px;
+        }
+    }
+}
+
+.ereview-icons {
+    @include flex-container(row, null, flex-start, center);
+    &__lists {
+        @include flex-container(row, null, flex-start, center);
+        margin-bottom: 0px;
+    }
+
+    &__item {
+        &:not(:last-child) {
+            margin-right: 4px;
+        }
+    }
+
+    &__star {
+        width: 18px;
+        height: 18px;
+        fill: $color-gray-3;
+        @media only screen and (max-width: 767px) {
+            width: 16px;
+            height: 16px;
+        }
+
+        &--fill {
+            fill: $color-rating; 
+        }
+    }
+
+    &__amount {
+        @include font-style(18px, $weight-regular, $color-rating);
+        line-height: 17.58px;
+        letter-spacing: -0.3px;
+        margin-top: 4px;
+        margin-left: 8px;
+        @media only screen and (max-width: 767px) {
+            font-size: 17px;
+        }
+    }
+}
+
+.ereview-list {
+
+}
+
+.ereview-item {
+    &:not(:last-child) {
+        margin-bottom: 45px;
+    }
+    &__name {
+        @include font-style(18px, &$weight-medium, $color-dark-blue);
+        line-height: 27px;
+        letter-spacing: -0.3px;
+        margin-bottom: 15px;
+        @media only screen and (max-width: 767px) {
+            font-size: 14px;
+            line-height: 21px;
+            margin-bottom: 8px;
+        }
+    }
+    &__review {
+        @include font-style(16px, $weight-regular, $color-review-text);
+        line-height: 27px;
+        letter-spacing: -0.3px;
+        margin-top: 7px;
+        margin-bottom: 9px;
+        width: 402px;
+        @media only screen and (max-width: 767px) {
+            font-size: 14px;
+            line-height: 21px;
+            margin-bottom: 5px;
+            width: unset;
+        }
+    }
+    &__time {
+        @include font-style(15px, &$weight-regular, $color-review-sub);
+        line-height: 22.5px;
+        letter-spacing: -0.3px;
+        margin-bottom: 0px;
+        text-transform: capitalize;
+        @media only screen and (max-width: 767px) {
+            font-size: 12px;
+            line-height: 18px;
+        }
+    }
+}

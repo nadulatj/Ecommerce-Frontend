@@ -1,0 +1,118 @@
+ 
+ 
+<app-header (openMenu)="openMenuBar()" (checkForCartChange1)="checkForCartChange()" [store_data]="store_data">
+
+</app-header>
+ 
+<app-item-search [store_data]="store_data"></app-item-search>
+
+  <section class="econtent">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <nav class="ebreadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="../index.html">{{'Home'|translate}}</a></li>
+              <li class="breadcrumb-item active" aria-current="page">{{'ShoppingCart'|translate}}</li>
+            </ol>
+          </nav>
+
+          <div class="ecart-section">
+            <div class="ecart-box">
+              <div  *ngFor="let cartItem of cart_data; let i = index" class="ecart-item">
+                <img src="{{image_base_path}}{{cartItem['logo']['image']}}" alt="Img" class="ecart-item__img">
+                <div class="ecart-details">
+                  <button (click)="DeleteCartItems(i)" class="ecart-details__close">
+                    <svg class="icon ecart-details__close-icon">
+                      <use xlink:href="../assets/Icons/sprite.svg#close-icon"></use>
+                    </svg>
+                  </button>
+                  <div class="ecart-details__info">
+                    <p class="ecart-details__info-name">{{cartItem['name']}}</p>
+                    <p class="ecart-details__info-price">{{store_data['currency']}} {{currencyFormatter(cartItem['totalPrice'])}}</p>
+                  </div>
+                  <div class="ecart-details__count">
+                    <div class="ecart-details__count-row">
+                      <button (click)="updateItemsCount(i,cartItem,'substract')" class="ecart-details__count-btn">
+                        <span>-</span> </button>
+                      <p class="ecart-details__count-amount">{{cartItem['quantity']}}</p>
+                      <button (click)="updateItemsCount(i,cartItem,'add')" class="ecart-details__count-btn"> <span>+</span> </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="ecart-item">
+                <img src="../assets/img/shoe-img-1.png" alt="Img" class="ecart-item__img">
+                <div class="ecart-details">
+                  <button class="ecart-details__close">
+                    <svg class="icon ecart-details__close-icon">
+                      <use xlink:href="../assets/Icons/sprite.svg#close-icon"></use>
+                    </svg>
+                  </button>
+                  <div class="ecart-details__info">
+                    <p class="ecart-details__info-name">Nike Sports Shoe 8230-55</p>
+                    <p class="ecart-details__info-price">Rs. 120000.00</p>
+                  </div>
+                  <div class="ecart-details__count">
+                    <div class="ecart-details__count-row">
+                      <button class="ecart-details__count-btn disabled">
+                        <span>-</span> </button>
+                      <p class="ecart-details__count-amount">01</p>
+                      <button class="ecart-details__count-btn"> <span>+</span> </button>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="ecart-info">
+            <h4 class="ecart-info__title ecart-info__title--main">{{'cartDetails'|translate}}</h4>
+            <div class="ecart-info__sub">
+              <p class="ecart-info__sub-name">{{'subTotal'|translate}}</p>
+              <p class="ecart-info__sub-price">{{store_data['currency']}} {{currencyFormatter(cart_total)}}</p>
+            </div>
+            <h6 class="ecart-info__title ecart-info__title--sub">{{'shipping'|translate}}</h6>
+            <div class="ecart-info__sub">
+              <p class="ecart-info__sub-name">{{'FlatRate'|translate}}</p>
+              <p class="ecart-info__sub-price ecart-info__sub-price--sub">{{store_data['currency']}} {{currencyFormatter(flat_rate)}}</p>
+            </div>
+            <!-- <div class="ecoupon">
+              <input type="text" class="ecoupon__input" placeholder="{{'coupon'|translate}}">
+              <button class="ebtn__lg--tertiary">{{'Apply'|translate}}</button>
+            </div> -->
+            <div class="pt-4 mt-4 ecart-info__sub">
+              <p class="ecart-info__sub-name">{{'Total'|translate}}</p>
+              <p class="ecart-info__sub-price ecart-info__sub-price--main">{{store_data['currency']}} {{currencyFormatter(final_total)}}</p>
+            </div>
+            <button (click)="redirectToCheckout()" class="ebtn__lg--primary w-100">{{'proceedCheckout'|translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </section>
+
+
+  <!-- Mobile Menu Section Start -->
+
+  <div [class.active]="is_menu_opened" class="col-md-4 col-lg-3 sidebar-responsive sidebar-mobile">
+    <div class="ecategory__mob">
+      <h4 class="ecategory__mob-title">Browse all categories</h4>
+      <div (click)="openMenuBar()" class="ecategory__close" id="sidebarhide">
+        <svg class="icon ecategory__close-icon">
+          <use xlink:href="../assets/Icons/sprite.svg#close-icon"></use>
+        </svg>
+      </div>
+    </div>
+    <div *ngFor="let catergory of catergoryData; let i = index" (click)="navigateToCategory(catergory.id)" class="ecategory__list">
+      <a  class="ecategory__list-link">{{catergory.name}}</a>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Section End -->
+  <app-footer [store_data]="store_data"></app-footer>

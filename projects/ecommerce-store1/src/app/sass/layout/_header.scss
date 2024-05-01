@@ -1,0 +1,236 @@
+.eheader {
+    @media only screen and (max-width: 767px) {
+        display: none;
+    }
+
+    @media only screen and (min-width: 768px) {
+        display: block;
+    }
+    &__top {
+        padding-top: 42px;
+        padding-bottom: 42px;
+        @include flex-container(row, null, space-between, center);
+        
+        &-logo {
+            &-img {
+                object-fit: cover;
+                height: 42px;
+                width: 180px;
+            }
+        }
+    }
+
+    &-contact {
+        @include flex-container(row, null, flex-end, center);
+
+        &__item {
+            @include flex-container(row, null, flex-start, center);
+            cursor: pointer;
+            position: relative;
+            @media only screen and (max-width: 992px) and (min-width: 767px) {
+                @include flex-container(column, null, flex-start, flex-start);
+            }
+
+            &:not(:last-child) {
+                margin-right: 35px;
+            }
+            &-badge {
+                background-color: $color-red;
+                @include font-style(12px, $weight-regular, $color-white);
+                line-height: 18px;
+                position: absolute;
+                width: 22px;
+                height: 22px;
+                border-radius: 100px;
+                @include flex-container(null, null, center, center);
+                top: -7px;
+                right: 0px;
+            }
+
+            &-title {
+                @include font-style(14px, $weight-medium, $color-black);
+                line-height: 21px;
+                margin-bottom: 3px;
+                display: flex;
+
+                &-badge {
+                    display: none;
+                    @media only screen and (max-width: 991px) and (min-width: 768px) {
+                        background-color: $color-red;
+                        @include font-style(12px, $weight-regular, $color-white);
+                        line-height: 18px;
+                        width: 18px;
+                        height: 18px;
+                        border-radius: 100px;
+                        @include flex-container(null, null, center, center);
+                        margin-left: 4px;
+                    }
+                }
+            }
+
+            &-link {
+                @include font-style(14px, $weight-regular, $color-orange);
+                line-height: 21px;
+                text-decoration: underline;
+                transition: all 0.5s;
+
+                &:hover {
+                    color: $color-orange;
+                    text-decoration: underline;
+                    opacity: .8;
+                }
+            }
+
+            &-text {
+                @include font-style(14px, $weight-regular, $color-gray-1);
+                transition: all 0.5s;
+                margin-bottom: 0px;
+
+                &:hover {
+                    color: $color-gray-1;
+                    opacity: .8;
+                }
+            }
+        }
+        
+        &__circle {
+           width: 50px;
+           height: 50px;
+           background: $color-white;
+            box-shadow: 0px 4px 35px rgba(0, 0, 0, 0.2);
+            border-radius: 100px;
+            margin-right: 15px;
+            @include flex-container(null, null, center, center);
+            @media only screen and (max-width: 991px) and (min-width: 768px) {
+                display: none;
+            }
+
+            &--amount {
+                position: relative;
+            }
+
+            @media only screen and (max-width: 992px) and (min-width: 767px) {
+                margin-bottom: 16px;
+            }
+        }
+
+        &__message {
+            width: 26px;
+            height: 16px;
+            fill: $color-black;
+        }
+
+        &__phone {
+            width: 26px;
+            height: 16px;
+            fill: $color-black;
+        }
+
+        &__cart {
+            width: 26px;
+            height: 16px;
+            fill: $color-black;
+        }
+    }
+}
+
+
+.eheader-mini {
+    @media only screen and (max-width: 767px) {
+        display: block;
+    }
+
+    @media only screen and (min-width: 768px) {
+        display: none;
+    }
+
+    &-top {
+        background-color: $color-black;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        @include flex-container(row, null, flex-start, center);
+        &__link {
+            @include font-style(10px, $weight-regular, $color-white);
+            line-height: 15px;
+            text-decoration: underline;
+            transition: all 0.5s;
+            margin-right: 18px;
+
+            &:hover {
+                color: $color-white;
+                text-decoration: underline;
+                opacity: .8;
+            }
+        }
+
+        &__number {
+            @include font-style(10px, $weight-regular, $color-white);
+            line-height: 15px;
+            transition: all 0.5s;
+
+            &:hover {
+                color: $color-white;
+                opacity: .8;
+            }
+        }
+    }
+
+    &-bottom {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        &__row {
+            @include flex-container(row, null, space-between, center);
+        }
+    }
+
+    &__menu {
+        width: 26px;
+        height: 13px;
+        fill: $color-black;
+    }
+
+    &__logo {
+        &-img {
+            width: 117px;
+            height: 27px;
+            object-fit: cover;
+        }
+    }
+
+    &__circle {
+        width: 33px;
+        height: 33px;
+        background: $color-white;
+        box-shadow: 0px 4px 35px rgba(0, 0, 0, 0.2);
+        border-radius: 100px;
+        margin-right: 15px;
+        @include flex-container(null, null, center, center);
+
+        &--amount {
+            position: relative;
+        }
+
+        @media only screen and (max-width: 992px) and (min-width: 767px) {
+            margin-bottom: 16px;
+        }
+    }
+
+    &__cart {
+        width: 26px;
+        height: 13px;
+        fill: $color-black;
+    }
+
+    &__badge {
+        background-color: $color-red;
+        @include font-style(9px, $weight-medium, $color-white);
+        line-height: 13.5px;
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        border-radius: 100px;
+        @include flex-container(null, null, center, center);
+        top: -4px;
+        right: 0px;
+    }
+}

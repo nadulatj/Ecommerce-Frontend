@@ -1,0 +1,82 @@
+  <!-- Homepage Content End -->
+
+
+
+
+
+
+
+  <!-- Footer Section Start -->
+  <footer class="efooter">
+    <div class="efooter-top container">
+      <div class="row">
+        <div class="col-md-4">
+          <img *ngIf="logo" src="{{image_base_path}}{{logo}}" alt="logo" class="efooter__img">
+          <p class="efooter__description">
+            {{description}}
+          </p>
+        </div>
+        <div class="col-md-4 efooter-links">
+          <h3 class="efooter__title">{{'contactUs'|translate}}</h3>
+          <ul class="efooter-links__list">
+            <li class="efooter-links__item">
+              <svg class="icon efooter-links__location">
+                <use xlink:href="assets/Icons/sprite.svg#location"></use>
+              </svg>
+              <span class="efooter-links__text">{{business_address}}</span>
+            </li>
+            <li class="efooter-links__item">
+              <svg class="icon efooter-links__message">
+                <use xlink:href="assets/Icons/sprite.svg#message"></use>
+              </svg>
+              <span class="efooter-links__text">{{email}}</span>
+            </li>
+            <li class="efooter-links__item">
+              <svg class="icon efooter-links__phone">
+                <use xlink:href="assets/Icons/sprite.svg#phone"></use>
+              </svg>
+              <span class="efooter-links__text">{{contact}}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4 efooter-social">
+          <ul class="efooter-social__list">
+            <li *ngIf="store_data['facebook_url']" class="efooter-social__item">
+              <a href="{{store_data['facebook_url']?store_data['facebook_url']:'https://www.facebook.com/'}}" target="_blank" class="efooter-social__item-link">
+                <svg class="icon efooter-social__fb">
+                  <use xlink:href="assets/Icons/sprite.svg#social-fb"></use>
+                </svg>
+              </a>
+            </li>
+            <li *ngIf="store_data['instagram_url']"  class="efooter-social__item">
+              <a href="{{store_data['instagram_url']?store_data['instagram_url']:'https://www.instagram.com/'}}" target="_blank" class="efooter-social__item-link">
+                <svg class="icon efooter-social__instagram">
+                  <use xlink:href="assets/Icons/sprite.svg#social-instagram"></use>
+                </svg>
+              </a>
+            </li>
+            <li *ngIf="store_data['tiktok_url']" class="efooter-social__item">
+              <a href="{{store_data['tiktok_url']?store_data['tiktok_url']:'https://www.tiktok.com/en/'}}" target="_blank" class="efooter-social__item-link">
+                <svg class="icon efooter-social__linkedin">
+                  <use xlink:href="assets/Icons/sprite.svg#social-tiktok"></use>
+                </svg>
+              </a>
+            </li>
+            <li *ngIf="store_data['telegram_url']" class="efooter-social__item">
+              <a href="{{store_data['telegram_url']?telegram + store_data['telegram_url']:'https://web.telegram.org/?legacy=1#/login'}}" target="_blank" class="efooter-social__item-link">
+                <svg class="icon efooter-social__linkedin">
+                  <use xlink:href="assets/Icons/sprite.svg#social-telegram"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="efooter-copywrite text-center">
+      <p class="efooter-copywrite__text">
+        © 2022 Copyright by {{store_data['name']}}. All rights reserved.
+      </p>
+    </div>
+  </footer>
+  <!-- Footer Section End -->

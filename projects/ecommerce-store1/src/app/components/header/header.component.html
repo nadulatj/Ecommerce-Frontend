@@ -1,0 +1,148 @@
+  <!-- Top Header Start -->
+
+  <!-- Top Header Large Screen Section Start -->
+  <header class="eheader fixed-top bg-white">
+    <div class="container eheader__top">
+      <a href="/" class="eheader__top-logo">
+        <img *ngIf="store_data['logo']" src="{{image_base_path}}{{store_data['logo']}}" alt="Foxhub Logo" class="eheader__top-logo-img img-fluid">
+      </a>
+      <div class="eheader-contact">
+        <div class="eheader-contact__item">
+          <div class="eheader-contact__circle">
+            <svg class="icon eheader-contact__message">
+              <use xlink:href="../assets/Icons/sprite.svg#message"></use>
+            </svg>
+          </div>
+          <div class="eheader-contact__item-details">
+            <p class="eheader-contact__item-title">{{'Email'|translate}}</p>
+            <a href="mailto: abc@example.com" class="eheader-contact__item-link">{{email}}</a>
+          </div>
+        </div>
+        <div class="eheader-contact__item">
+          <div class="eheader-contact__circle">
+            <svg class="icon eheader-contact__phone">
+              <use xlink:href="../assets/Icons/sprite.svg#phone"></use>
+            </svg>
+          </div>
+          <div class="eheader-contact__item-details">
+            <p class="eheader-contact__item-title">{{'Phone'|translate}}</p>
+            <a href="tel:+94775689098" class="eheader-contact__item-text">{{contact}}</a>
+          </div>
+        </div>
+        <div (click)="openCart()" class="eheader-contact__item" id="scart-btn">
+          <div class="eheader-contact__circle eheader-contact__circle--amount">
+            <svg class="icon eheader-contact__cart">
+              <use xlink:href="../assets/Icons/sprite.svg#cart"></use>
+            </svg>
+            <span class="eheader-contact__item-badge">{{cart_data.length}}</span>
+          </div>
+          <div class="eheader-contact__item-details">
+            <p class="eheader-contact__item-title">{{'ShoppingCart'|translate}} <span
+                class="eheader-contact__item-title-badge">{{cart_data.length}}</span></p>
+            <p class="eheader-contact__item-text">{{store_data['currency']}} {{currencyFormatter(cart_total)}}</p>
+          </div>
+
+          <!-- Shopping Cart Icon  Click Modal Open Start -->
+
+          <div class="scart-popover" [ngStyle]="{'display':is_cart_open?'block':'none'}"  >
+            <div class="scart-popover__header">
+              <p class="scart-popover__header-title">{{'ShoppingCart'|translate}}</p>
+              <svg class="icon scart-popover__header-icon">
+                <use xlink:href="../assets/Icons/sprite.svg#close-icon"></use>
+              </svg>
+            </div>
+            <div  *ngIf="cart_data.length==0">
+                <p style="padding: 20px;">{{'NoItems'|translate}}</p>
+            </div>
+            <ul *ngIf="cart_data.length>0" class="scart-popover__list escrollbar">
+              <li *ngFor="let cartItem of cart_data; let i = index" class="scart-popover__item">
+                <div class="scart-popover__item-left">
+                  <img src="{{image_base_path}}{{cartItem['logo']['image']}}" alt="Shoe Img" class="scart-popover__img">
+                  <div class="scart-popover__details">
+                    <p class="scart-popover__details-title">{{cartItem['name']}}</p>
+                    <p class="scart-popover__details-price"><span class="scart-popover__details-count">{{cartItem['quantity']}}</span> {{store_data['currency']}}
+                      {{currencyFormatter(cartItem['totalPrice'])}}</p>
+                  </div>
+                </div>
+                <a (click)="removeCartItem($event,i)" class="scart-popover__item-link">
+                  <svg (click)="removeCartItem($event,i)" class="icon scart-popover__item-icon">
+                    <use xlink:href="../assets/Icons/sprite.svg#trash"></use>
+                  </svg>
+                </a>
+              </li>
+              <!-- <li class="scart-popover__item">
+                <div class="scart-popover__item-left">
+                  <img src="../assets/img/shoe-small.png" alt="Shoe Img" class="scart-popover__img">
+                  <div class="scart-popover__details">
+                    <p class="scart-popover__details-title">Nike Sports Shoe 8230-55</p>
+                    <p class="scart-popover__details-price"><span class="scart-popover__details-count">1</span> Rs.
+                      120000.00</p>
+                  </div>
+                </div>
+                <a href="#" class="scart-popover__item-link">
+                  <svg class="icon scart-popover__item-icon">
+                    <use xlink:href="assets/Icons/sprite.svg#trash"></use>
+                  </svg>
+                </a>
+              </li> -->
+              <!-- <li class="scart-popover__item">
+                <div class="scart-popover__item-left">
+                  <img src="../assets/img/shoe-small.png" alt="Shoe Img" class="scart-popover__img">
+                  <div class="scart-popover__details">
+                    <p class="scart-popover__details-title">Nike Sports Shoe 8230-55</p>
+                    <p class="scart-popover__details-price"><span class="scart-popover__details-count">1</span> Rs.
+                      120000.00</p>
+                  </div>
+                </div>
+                <a href="#" class="scart-popover__item-link">
+                  <svg class="icon scart-popover__item-icon">
+                    <use xlink:href="../assets/Icons/sprite.svg#trash"></use>
+                  </svg>
+                </a>
+              </li> -->
+            </ul>
+            <hr class="scart-popover__line">
+            <div class="scart-popover__total">
+              <p class="scart-popover__total-title">{{'Subtotal'|translate}}</p>
+              <p class="scart-popover__total-amount">{{store_data['currency']}} {{currencyFormatter(cart_total)}}</p>
+            </div>
+            <div class="scart-popover__footer">
+              <button (click)="redirectTocartPage()" class="ebtn__sm--outline">{{'ViewCart'|translate}}</button>
+              <button (click)="redirectToCheckout()" class="ebtn__sm--primary">{{'Checkout'|translate}}</button>
+            </div>
+          </div>
+    
+          <!-- Shopping Cart Icon Click Modal Open End -->
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+    <!-- Top Header Small Screen Section Start -->
+    <header class="eheader-mini fixed-top bg-white">
+        <div class="eheader-mini-top">
+          <div class="container">
+            <a href="mailto: abc@example.com" class="eheader-mini-top__link">{{email}}</a>
+            <a href="tel:+94775689098" class="eheader-mini-top__number">{{contact}}</a>
+          </div>
+        </div>
+        <div class="eheader-mini-bottom">
+          <div class="container eheader-mini-bottom__row">
+            <svg (click)="headerOpen()" class="icon eheader-mini__menu" id="sidebarCollapse">
+              <use  xlink:href="./assets/Icons/sprite.svg#menu"></use>
+            </svg>
+            <a href="index.html" class="eheader-mini__logo">
+              <img *ngIf="store_data['logo']" src="{{image_base_path}}{{store_data['logo']}}" alt="Foxhub Logo" class="eheader-mini__logo-img">
+            </a>
+            <div class="eheader-mini__circle eheader-mini__circle--amount">
+              <a (click)="redirectTocartPage()">
+                <svg class="icon eheader-mini__cart">
+                  <use xlink:href="./assets/Icons/sprite.svg#cart"></use>
+                </svg>
+                <span class="eheader-mini__badge">{{cart_data.length}}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>

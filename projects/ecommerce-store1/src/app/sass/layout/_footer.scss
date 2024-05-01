@@ -1,0 +1,152 @@
+.efooter {
+    background-color: $color-bg;
+    border-top: 1px solid $color-gray-4;
+
+    &-top {
+        padding-top: 62px;
+        padding-bottom: 62px;
+        @media only screen and (max-width: 767px) {            
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+    }
+    
+    &__img {
+        object-fit: cover;
+        height: 42px;
+        width: 180px;
+    }
+
+    &__description {
+        margin-top: 40px;
+        margin-bottom: 0px;
+        @include font-style(14px, $weight-regular, $color-dark-gray);
+        line-height: 25px;
+        @media only screen and (min-width: 1200px) {            
+            width: 330px;
+        }
+        @media only screen and (max-width: 767px) {            
+            font-size: 12px;
+            line-height: 25px;
+        }
+    }
+
+    &__title {
+        @include font-style(18px, $weight-medium, $color-dark-gray);
+        @media only screen and (max-width: 767px) {            
+            font-size: 14px;
+            line-height: 21px;
+        }
+    }
+
+    &-links {
+        @media only screen and (max-width: 767px) {            
+            margin-top: 40px;
+        }
+        &__list{
+            margin-top: 40px;
+            margin-bottom: 0px;
+            @media only screen and (max-width: 767px) {
+                margin-top: 21px;
+            }
+        }
+        &__item {
+            @include flex-container(row, null, null, flex-start);
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+        }
+
+        &__location{
+            width: 36px;
+            fill: $color-dark-gray;
+            height: 16px;
+            margin-right: 12px;
+        }
+
+        &__message {
+            width: 36px;
+            fill: $color-dark-gray;
+            height: 16px;
+            margin-right: 12px;
+        }
+
+        &__phone {
+            width: 36px;
+            fill: $color-dark-gray;
+            height: 16px;
+            margin-right: 12px;
+        }
+
+        &__text {
+            @include flex-container(column, null, flex-start, null);
+            @include font-style(14px, $weight-regular, $color-dark-gray);
+            @media only screen and (max-width: 767px) {            
+                font-size: 12px;
+                line-height: 18px;
+            }
+        }
+    }
+
+    &-social {
+        @include flex-container(null, null, flex-end, flex-end);
+        @media only screen and (max-width: 767px) {            
+            @include flex-container(null, null, flex-start, center);
+            margin-top: 40px;
+        }
+        &__list {
+            @include flex-container(row, null, flex-end, flex-end);
+            margin-bottom: 0px;
+        }       
+        &__item {
+            &:not(:last-child) {
+                margin-right: 15px;
+            }
+            &-link {
+                width: 34px;
+                height: 34px;
+                box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
+                background-color: $color-white;
+                @include flex-container(row, null, center, center);
+                border-radius: 100px;
+                transition: all 0.5s;
+
+                &:hover {
+                    opacity: .7;
+                }
+            }
+        }
+       
+        &__fb {
+            width: 36px;
+            fill: $color-dark-gray;
+            height: 12px;
+        }
+        &__instagram {
+            width: 36px;
+            fill: $color-dark-gray;
+            height: 13px;
+        }
+        &__linkedin {
+            width: 36px;
+            fill: $color-dark-gray;
+            height: 11px;
+        }
+    }
+
+    
+
+    &-copywrite {
+        border-top: 1px solid $color-gray-4;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        &__text {
+            margin-bottom: 0px;
+            @include font-style(14px, $weight-regular, $color-dark-gray);
+            @media only screen and (max-width: 767px) {            
+                font-size: 12px;
+                line-height: 18px;
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+<div class="file-upload-root">
+    <div class="dropbox-wrapper" 
+        [ngStyle]="{'border-color': has_errors ? '#ff3d71' : '#C6C6C6','background-color':'#ECF1F9'}"
+        [ngClass]="{'dropbox-wrapper-dragging': is_dragging}"
+    >
+        <div #fileUploadDropbox id="file-upload-dropbox" class="dropbox" [ngClass]="{'dropbox-dragging': is_dragging}">
+            <!-- <img src="assets/svgs/file-upload.svg" alt="upload icon"> -->
+            <img src="../assets/img/upload.png" alt="frimi img" class="fileImage">
+            <p>Drag or Click here to upload <br /> Bank transfer receipt</p>
+
+            <div class="file-list" *ngIf="files && files.length > 0">
+                <div class="file-list-item" *ngFor="let file of files; let i = index">
+                    <span class="filename">{{ file?.name}}</span>
+
+                    <span class="filesize">{{ formatFileSize(file?.size) }}</span>
+
+                    <!-- <button type="button" > -->
+                        <svg style="cursor: pointer;" (click)="onRemoveFile($event, i)" class="icon scart-popover__item-icon">
+                            <use xlink:href="../assets/Icons/sprite.svg#trash"></use>
+                          </svg>
+                    <!-- </button> -->
+                </div>
+            </div>
+        
+            <input
+                #fileUploadField
+                type="file" 
+                name="file" 
+                single
+                (change)="onFileChange($event)"
+            >
+        </div>
+    </div>
+
+    <ul class="error-wrapper" *ngIf="has_errors">
+        <li *ngIf="ERRORS.MAX_COUNT.status">{{ ERRORS.MAX_COUNT.message }}</li>
+        <li *ngIf="ERRORS.FORMAT.status">{{ ERRORS.FORMAT.message }}</li>
+        <li *ngIf="ERRORS.MAX_LIMIT.status">{{ ERRORS.MAX_LIMIT.message }}</li>
+    </ul>
+</div>
+
+

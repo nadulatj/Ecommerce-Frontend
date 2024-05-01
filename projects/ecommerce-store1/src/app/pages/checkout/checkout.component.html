@@ -1,0 +1,440 @@
+
+
+<app-header  (checkForCartChange1)="checkForCartChange()" (openMenu)="openMenuBar()" [store_data]="store_data">
+
+</app-header>
+
+<app-item-search [store_data]="store_data"></app-item-search>
+  <section class="econtent">
+
+    <div class="container">
+      <form [formGroup]="checkoutForm">
+      <div class="row">
+        <div class="col-md-7">
+          <nav class="ebreadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="../index.html">{{'Home'|translate}}</a></li>
+              <li class="breadcrumb-item"><a href="../pages/cart-page.html">{{'ShoppingCart'|translate}}</a></li>
+              <li class="breadcrumb-item active" aria-current="page">{{'Confirmation'|translate}}</li>
+            </ol>
+          </nav>
+
+           <div class="echeckout-section">
+            <h4 class="echeckout-title">{{'BillingDetails'|translate}}</h4>
+            <!-- <form class="echeckout-form"> -->
+              <div class="form-row">
+                <div class="echeckout-form__group col-md-6">
+                  <label for="fname" class="echeckout-form__label">{{'FirstName'|translate}} <span
+                      class="echeckout-form__required">*</span></label>
+                  <input formControlName="fname" type="text" class="form-control echeckout-form__input" id="fname"
+                    placeholder="{{'WriteFirstName'|translate}}" cardNameInputMask>
+                    <div class="err" *ngIf="checkoutForm.get('fname')?.invalid && (checkoutForm.get('fname')?.dirty|| checkoutForm.get('fname')?.touched)">
+                      <p [class.invalid]="checkoutForm.get('fname')?.errors"></p>
+                      <small class="font-red" *ngIf="checkoutForm.controls['fname'].hasError('required')">
+                        {{'FirstNameEmptyValidation'|translate}}
+                      </small>
+                  </div>
+                </div>
+                <div class="echeckout-form__group col-md-6">
+                  <label for="lname" class="echeckout-form__label">{{'LastName'|translate}} <span
+                      class="echeckout-form__required">*</span></label>
+                  <input formControlName="lname" type="text" class="form-control echeckout-form__input" id="lname"
+                    placeholder="{{'WriteLastName'|translate}}" cardNameInputMask>
+                    <div class="err" *ngIf="checkoutForm.get('lname')?.invalid && (checkoutForm.get('lname')?.dirty|| checkoutForm.get('lname')?.touched)">
+                      <p [class.invalid]="checkoutForm.get('lname')?.errors"></p>
+                      <small class="font-red" *ngIf="checkoutForm.controls['lname'].hasError('required')">
+                        {{'LastNameEmptyValidation'|translate}}
+                      </small>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="echeckout-form__group col-md-6">
+                  <label for="pnumber" class="echeckout-form__label">{{'phoneNumber'|translate}} <span
+                      class="echeckout-form__required">*</span></label>
+                  <input formControlName="phone" type="text" class="form-control echeckout-form__input" id="pnumber"
+                    placeholder="{{'Writephone'|translate}}" numbersOnly>
+                    <div class="err" *ngIf="checkoutForm.get('phone')?.invalid && (checkoutForm.get('phone')?.dirty|| checkoutForm.get('phone')?.touched)">
+                      <p [class.invalid]="checkoutForm.get('phone')?.errors"></p>
+                      <small class="font-red" *ngIf="checkoutForm.controls['phone'].hasError('required')">
+                        {{'phoneNumberEmptyValidation'|translate}}
+                      </small>
+                      <small class="font-red" *ngIf="!checkoutForm.controls['phone'].hasError('pattern') && checkoutForm.controls['phone'].hasError('minlength')">
+                        {{'phoneNumberMinimun'|translate}}
+                    </small>
+                    <!-- <small class="font-red" *ngIf="!checkoutForm.controls['phone'].hasError('pattern') && checkoutForm.controls['phone'].hasError('maxlength')">
+                      {{'phoneNumberMaximum'|translate}}
+                    </small> -->
+                  </div>
+
+                </div>
+                <div class="echeckout-form__group col-md-6">
+                  <label for="eemail" class="echeckout-form__label">{{'EmailAddress'|translate}} <span
+                      class="echeckout-form__required">*</span></label>
+                  <input formControlName="email_address" type="email" class="form-control echeckout-form__input" id="eemail"
+                    placeholder="{{'WriteEmail'|translate}}">
+                    <div class="err" *ngIf="checkoutForm.get('email_address')?.invalid && (checkoutForm.get('email_address')?.dirty|| checkoutForm.get('email_address')?.touched)">
+                      <p [class.invalid]="checkoutForm.get('email_address')?.errors"></p>
+                      <small class="font-red" *ngIf="checkoutForm.controls['email_address'].hasError('required')">
+                        {{'emailEmptyValidation'|translate}}
+                      </small>
+                      <small class="font-red" *ngIf="checkoutForm.controls['email_address'].hasError('pattern')">
+                        {{'emailInvalid'|translate}}
+                    </small>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+             
+                <div class="echeckout-form__group col-md-6">
+                  <label for="estreet" class="echeckout-form__label">  {{'streetAddress'|translate}} <span
+                      class="echeckout-form__required">*</span></label>
+                  <input formControlName="address" type="text" class="form-control echeckout-form__input" id="estreet"
+                    placeholder="{{'WriteStreet'|translate}}">
+                    <div class="err" *ngIf="checkoutForm.get('address')?.invalid && (checkoutForm.get('address')?.dirty|| checkoutForm.get('address')?.touched)">
+                      <p [class.invalid]="checkoutForm.get('address')?.errors"></p>
+                      <small class="font-red" *ngIf="checkoutForm.controls['address'].hasError('required')">
+                        {{'streetAddressEmptyValidation'|translate}}
+                      </small>
+                  </div>
+                </div>
+
+                <div class="echeckout-form__group col-md-6">
+                  <label for="etown" class="echeckout-form__label">{{'TownCity'|translate}} <span
+                      class="echeckout-form__required">*</span></label>
+                  <input formControlName="town" type="text" class="form-control echeckout-form__input" id="etown"
+                    placeholder="{{'WriteTown'|translate}}">
+                    <div class="err" *ngIf="checkoutForm.get('town')?.invalid && (checkoutForm.get('town')?.dirty|| checkoutForm.get('town')?.touched)">
+                      <p [class.invalid]="checkoutForm.get('town')?.errors"></p>
+                      <small class="font-red" *ngIf="checkoutForm.controls['town'].hasError('required')">
+                        {{'TownCityEmptyValidation'|translate}}
+                      </small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="echeckout-form__group col-md-6">
+                  <label for="ecountry" class="echeckout-form__label">{{'CountryRegion'|translate}} <span
+                      class="echeckout-form__required">*</span></label>
+                  <input formControlName="country" type="text" class="form-control echeckout-form__input" id="ecountry"
+                    placeholder="{{'WriteCountry'|translate}}" cardNameInputMask>
+
+                    <div class="err" *ngIf="checkoutForm.get('country')?.invalid && (checkoutForm.get('country')?.dirty|| checkoutForm.get('country')?.touched)">
+                      <p [class.invalid]="checkoutForm.get('country')?.errors"></p>
+                      <small class="font-red" *ngIf="checkoutForm.controls['country'].hasError('required')">
+                        Country cannot be left blank.
+                      </small>
+                  </div>
+
+                </div>
+                <div class="echeckout-form__group col-md-6">
+                  <label for="ecode" class="echeckout-form__label">{{'PostZIP'|translate}} <span
+                      class="echeckout-form__required"></span></label>
+                  <input formControlName="postal" type="text" class="form-control echeckout-form__input" id="ecode"
+                    placeholder="{{'WritePostal'|translate}}">
+                    <small class="font-red" *ngIf="checkoutForm.controls['postal'].hasError('invalidInput')">
+                      Postal Zip contains invalid characters.
+                    </small>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="echeckout-form__group col">
+                  <label for="enote" class="echeckout-form__label">{{'Ordernotes'|translate}}</label>
+                  <textarea formControlName="notes" class="form-control echeckout-form__textarea" id="enote" rows="5"
+                    placeholder="{{'WriteNotes'|translate}}"></textarea>
+                    <small class="font-red" *ngIf="checkoutForm.controls['notes'].hasError('invalidInput2')">
+                      Order Note contains invalid characters.
+                    </small>
+                </div>
+
+              </div>
+              <div class="form-row">
+                <div class="echeckout-form__group">
+                  <div class="echeckbox-group">
+                    <div class="echeckbox-group__input">
+                      <input (change)="checkValue()" formControlName="is_different_shipping" type="checkbox" id="echeckbox" name="checkbox" />
+                      <label for="echeckbox"></label>
+                    </div>
+                    <p class="echeckbox-group__text">{{'differentShip'|translate}}</p>
+                  </div>
+                </div>
+              </div>
+ 
+              <div class="form-row">
+            
+                <div class="echeckout-form__group col-md-6">
+                  <label for="estreet" class="echeckout-form__label">{{'streetAddress'|translate}} <span
+                      class="echeckout-form__required"></span></label>
+                  <input formControlName="address_secondary" type="text" class="form-control echeckout-form__input" id="estreet"
+                    placeholder="{{'WriteStreet'|translate}}">
+                </div>
+                <div class="echeckout-form__group col-md-6">
+                  <label for="etown" class="echeckout-form__label">{{'TownCity'|translate}} <span
+                      class="echeckout-form__required"></span></label>
+                  <input formControlName="town_secondary" type="text" class="form-control echeckout-form__input" id="etown"
+                    placeholder="{{'WriteTown'|translate}}">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="echeckout-form__group col-md-6">
+                  <label for="ecountry" class="echeckout-form__label">{{'CountryRegion'|translate}} <span
+                      class="echeckout-form__required"></span></label>
+                  <input [disabled]="true" formControlName="country_secondary" type="text" class="form-control echeckout-form__input" id="ecountry"
+                    placeholder="{{'WriteCountry'|translate}}" cardNameInputMask>
+                </div>
+            
+                <div class="echeckout-form__group col-md-6">
+                  <label for="ecode" class="echeckout-form__label">{{'PostZIP'|translate}}<span
+                      class="echeckout-form__required"></span></label>
+                  <input formControlName="postal_secondary" type="text" class="form-control echeckout-form__input" id="ecode"
+                    placeholder="{{'WritePostal'|translate}}">
+                </div>
+              </div>
+            <!-- </form> -->
+          </div> 
+        </div>
+        <div class="col-md-5">
+          <div class="ecart-info">
+            <h4 class="ecart-info__title ecart-info__title--main">{{'cartDetails'|translate}}</h4>
+            <div class="ecart-info__sub">
+              <p class="ecart-info__sub-name">{{'subTotal'|translate}}</p>
+              <p class="ecart-info__sub-price">{{store_data['currency']}} {{currencyFormatter(cart_total)}}</p>
+            </div>
+            <h6 class="ecart-info__title ecart-info__title--sub">{{'shipping'|translate}}</h6>
+            <div class="ecart-info__sub">
+              <p class="ecart-info__sub-name">{{'FlatRate'|translate}}</p>
+              <p class="ecart-info__sub-price ecart-info__sub-price--sub">{{store_data['currency']}} {{currencyFormatter(flat_rate)}}</p>
+            </div>
+            <!-- <div class="ecoupon">
+                            <input type="text" class="ecoupon__input" placeholder="Coupon Code">
+                            <button class="ebtn__lg--tertiary">Apply</button>
+                        </div> -->
+            <div class="ecart-info__sub ecart-info__sub--pay">
+              <p class="ecart-info__sub-name">{{'Total'|translate}}</p>
+              <p class="ecart-info__sub-price ecart-info__sub-price--main">{{store_data['currency']}} {{currencyFormatter(final_total)}}</p>
+            </div>
+
+            <!-- <div class="ecart-info__payment">
+              <div class="echeckbox-group">
+                <div class="echeckbox-group__input">
+                  <input type="checkbox" id="echeckbox-visa" name="checkbox" />
+                  <label for="echeckbox-visa"></label>
+                </div>
+                <img src="../assets/img/visa.png" alt="visa img" class="echeckbox-group__visa">
+                <p class="echeckbox-group__text">Visa / Master</p>
+              </div>
+            </div>
+
+            <div class="ecart-info__payment">
+              <div class="echeckbox-group">
+                <div class="echeckbox-group__input">
+                  <input type="checkbox" id="echeckbox-frimi" name="checkbox" />
+                  <label for="echeckbox-frimi"></label>
+                </div>
+                <img src="../assets/img/frimi.png" alt="frimi img" class="echeckbox-group__frimi">
+                <p class="echeckbox-group__text" data-toggle="modal" data-target=".make-payment-frimi">FriMi</p>
+              </div>
+            </div> -->
+
+
+
+
+            <div  class="ecart-info__payment">
+              <div class="echeckbox-group">
+                <div class="echeckbox-group__input">
+                  <input formControlName="cod" type="checkbox" id="echeckbox-cod" name="checkbox-cod" (change)="inputChange($event)" />
+                  <label for="echeckbox-cod"></label>
+                </div>
+                <img src="../assets/img/cod.png" alt="frimi img" class="echeckbox-group__frimi">
+                <p class="echeckbox-group__text" >{{'cashDelivery'|translate}}</p>
+              </div>
+            </div>
+
+
+            <div  class="ecart-info__payment">
+              <div class="echeckbox-group">
+                <div class="echeckbox-group__input">
+                  <input formControlName="direct_bank" type="checkbox" id="echeckbox-frimi" name="checkbox-direct" (change)="inputChange($event)" />
+                  <label for="echeckbox-frimi"></label>
+                </div>
+                <img src="../assets/img/bank.png" alt="frimi img" class="echeckbox-group__frimi">
+                <p class="echeckbox-group__text" >{{'DirectBank'|translate}}</p>
+              </div>
+            </div>
+
+            <div style="width: 100%;" *ngIf="checkoutForm.value.direct_bank==true">
+              <p class="bank_details_heading">Bank Account Details</p>
+
+              <div class="row">
+                <div *ngFor="let item of store_data['bank_details']; let i = index" class="col-6 ">
+                <div  *ngIf="store_data['bank_details'].length > 1" [ngClass]="{'card_boder':i%2==0}">
+                  <p class="bank_details">{{item.bank_holder_name}}</p>
+                  <p class="bank_details">{{item.bank_acc_no}} <span style="cursor: pointer;" (click)="openSnackBar('copied account number', '')" title="copied" (click)="copyText(item.bank_acc_no)"><svg class="icon efooter-social__fb">
+                    <use xlink:href="assets/Icons/sprite.svg#copy-icon"></use>
+                  </svg></span></p>
+                  <p class="bank_details">{{item.bank_name}}</p>
+                  <p class="bank_details">{{item.branch_name}}</p>
+                </div>
+                <hr *ngIf="store_data['bank_details'].length > 2"/>
+              </div>
+
+
+                <div *ngFor="let item of store_data['bank_details']; let i = index" class="col-12 ">
+                <div *ngIf="store_data['bank_details'].length === 1" >
+
+                  <p class="bank_details">{{item.bank_holder_name}}</p>
+                  <p class="bank_details">{{item.bank_acc_no}} <span style="cursor: pointer;" title="copied" (click)="copyText(item.bank_acc_no)"><svg class="icon efooter-social__fb">
+                    <use xlink:href="assets/Icons/sprite.svg#copy-icon"></use>
+                  </svg></span></p>
+                  <p class="bank_details">{{item.bank_name}}</p>
+                  <p class="bank_details">{{item.branch_name}}</p>
+                </div>
+              </div>
+
+
+
+
+              </div>
+             
+            </div>
+
+            <button *ngIf="checkoutForm.value.direct_bank==false" [disabled]="(!checkoutForm.valid) || (cart_data.length==0) || checkoutForm.value.cod==false" (click)="orderSubmit('')" class="ebtn__lg--primary w-100" data-toggle="modal" data-target=".make-payment-master">{{'proceedPay'|translate}}</button>
+            <button *ngIf="checkoutForm.value.direct_bank==true" [disabled]="(!checkoutForm.valid) || (cart_data.length==0) || (checkoutForm.value.direct_bank==false) || (store_data['bank_details'].length === 0)"  data-bs-toggle="modal" data-bs-target="#myModal"  class="ebtn__lg--primary w-100">{{'submitReceipt'|translate}}</button>
+          </div>
+        </div>
+      </div>
+</form>
+    </div>
+
+  </section>
+  <!-- Make Payment Mastercard Modal Start  -->
+
+  <!-- <div class="modal emodal fade make-payment-master" tabindex="-1" role="dialog" aria-labelledby="make-payment"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg emodal-lg">
+      <div class="modal-content emodal-content">
+        <div class="modal-header emodal-header">
+          <h5 class="emodal-title">Make Payment</h5>
+          <button type="button" class="emodal-close" data-dismiss="modal" aria-label="Close">
+            <svg class="icon emodal-close__icon">
+              <use xlink:href="../assets/Icons/sprite.svg#close-icon"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body emodal-body">
+          <h4 class="emodal-body__title">Master Card</h4>
+          <form class="echeckout-form">
+            <div class="echeckout-form__group">
+              <label for="ecardname" class="echeckout-form__label">Name on Card</label>
+              <input type="text" class="form-control echeckout-form__input" id="ecardname"
+                placeholder="Name on your Card">
+            </div>
+            <div class="form-row">
+              <div class="echeckout-form__group col-md-7">
+                <label for="ecardno" class="echeckout-form__label">Card Number </label>
+                <div class="echeckout-form__addon">
+                  <img src="../assets/img/mastercard_logo.png" alt="mastercard" class="echeckout-form__addon-img">
+                  <input type="text" class="form-control echeckout-form__input" id="ecardno" placeholder="Card Number">
+                </div>
+              </div>
+              <div class="echeckout-form__group col">
+                <label for="ecvv" class="echeckout-form__label">CVV </label>
+                <input type="text" class="form-control echeckout-form__input" id="ecvv" placeholder="CVV">
+              </div>
+              <div class="echeckout-form__group col">
+                <label for="eexpiry" class="echeckout-form__label">Expiry </label>
+                <input type="text" class="form-control echeckout-form__input" id="eexpiry" placeholder="DD/MM">
+              </div>
+            </div>
+            <div class="echeckout-form__footer">
+              <button class="ebtn__pay">
+                <span class="ebtn__pay-text">Pay</span>
+                <svg class="icon ebtn__pay-icon">
+                  <use xlink:href="../assets/Icons/sprite.svg#arrow"></use>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+  <!-- Make Payment Mastercard Modal End  -->
+
+  <!-- Make Payment Frimi Modal Start  -->
+
+  <div class="modal emodal" id="myModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="make-payment"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg emodal-lg">
+      <div class="modal-content emodal-content">
+        <div class="modal-header emodal-header">
+          <h5 class="emodal-title">Confirm Order</h5>
+          <button type="button" class="emodal-close"  data-bs-dismiss="modal" aria-label="Close">
+            <svg class="icon emodal-close__icon">
+              <use xlink:href="../assets/Icons/sprite.svg#close-icon"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body emodal-body" style="height: 55vh;">
+          <div class="row">
+            <div class="col-md-8 mx-auto">
+              <div class="echeckout-form">
+                <!-- <div class="echeckout-form__group  modal-frimi">
+                  <label for="ecardname" class="echeckout-form__label">Freemi Number</label>
+                  <input type="text" class="form-control echeckout-form__input" id="ecardname"
+                    placeholder="Enter Freemi Number">
+                </div> -->
+                <!-- <button class="ebtn__lg--tertiary w-100">
+                  Next
+                </button> -->
+                <ngx-file-upload 
+                [formats]="['jpg', 'jpeg', 'png']"
+                (fileChange)="onFileChange($event)"
+            >
+            </ngx-file-upload>
+      
+          </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer echeckout-form__footer">
+          <button class="emodal-close" data-bs-dismiss="modal" aria-label="Close" class="mr-lg-3 ebtn__cancel ">
+            <span class="ebtn__cancel-text ">Cancel</span>
+          </button>
+          <button type="button" class="ebtn__pay " (click)="onBankReceiptSubmit()">
+            <span class="ebtn__pay-text ">Submit</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+    <!-- Mobile Menu Section Start -->
+
+    <div [class.active]="is_menu_opened" class="col-md-4 col-lg-3 sidebar-responsive sidebar-mobile">
+      <div class="ecategory__mob">
+        <h4 class="ecategory__mob-title">Browse all categories</h4>
+        <div (click)="openMenuBar()" class="ecategory__close" id="sidebarhide">
+          <svg class="icon ecategory__close-icon">
+            <use xlink:href="../assets/Icons/sprite.svg#close-icon"></use>
+          </svg>
+        </div>
+      </div>
+      <div *ngFor="let catergory of catergoryData; let i = index" (click)="navigateToCategory(catergory.id)" class="ecategory__list">
+        <a  class="ecategory__list-link">{{catergory.name}}</a>
+      </div>
+    </div>
+  
+    <!-- Mobile Menu Section End -->
+
+  <app-footer [store_data]="store_data"></app-footer>

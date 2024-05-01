@@ -1,0 +1,28 @@
+.ebreadcrumb {
+    .breadcrumb {
+        padding: 0px;
+        margin-bottom: 0px;
+        background: transparent;
+        align-items: center;
+
+        &-item {
+            a {
+                @include font-style(16px, $weight-regular, $color-orange !important);
+                line-height: 24px;
+                @media only screen and (max-width: 767px) {
+                    font-size: 14px;
+                    line-height: 21px;
+                }
+            }
+
+            &.active {
+                @include font-style(16px, $weight-regular, $color-gray-2);
+                line-height: 24px;
+                @media only screen and (max-width: 767px) {
+                    font-size: 14px;
+                    line-height: 21px;
+                }
+            }
+        }      
+    }
+}

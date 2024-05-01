@@ -1,0 +1,435 @@
+<app-header (openMenu)="openMenuBar()" [store_data]="store_data">
+
+</app-header>
+
+
+
+
+
+<!-- Search Section Start -->
+<div class="esearch mt-top">
+  <form [formGroup]="searchForm">
+    <div class="container esearch-group">
+      <button class="esearch-btn__category">
+        <span class="esearch-btn__category-text">{{'categories'|translate}}</span>
+      </button>
+      <input formControlName="search" type="text" class="esearch-input" placeholder="{{'searchItems'|translate}}">
+      <div class="esearch-btn__group">
+        <!-- <button class="esearch-btn__sort" id="sort-btn">
+          <svg class="icon esearch-btn__sort-icon">
+            <use xlink:href="./assets/Icons/sprite.svg#filter"></use>
+          </svg>
+          <span class="esearch-btn__sort-text">{{'sortBy'|translate}}</span> -->
+
+          <!-- Sort Icon Click Modal Open Start -->
+
+          <div class="esort-popover">
+            <p class="esort-popover__title">{{'sortBy'|translate}}</p>
+            <ul class="esort-popover__list">
+              <li class="esort-popover__item">
+                <a href="#" class="esort-popover__link">Sort by latest</a>
+              </li>
+              <li class="esort-popover__item">
+                <a href="#" class="esort-popover__link">Sort by Popularity</a>
+              </li>
+              <li class="esort-popover__item">
+                <a href="#" class="esort-popover__link">Sort by Price: low to high</a>
+              </li>
+              <li class="esort-popover__item">
+                <a href="#" class="esort-popover__link">Sort by Price: high to low</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Sort Icon Click Modal Open End -->
+        <!-- </button> -->
+
+
+        <button (click)="getDataByCategory()" class="esearch-btn__search">
+          <svg class="icon esearch-btn__search-icon">
+            <use xlink:href="./assets/Icons/sprite.svg#search"></use>
+          </svg>
+          <span class="esearch-btn__search-text">{{'search'|translate}}</span>
+        </button>
+      </div>
+    </div>
+  </form>
+  </div>
+
+  <!-- Search Section End -->
+
+  <!-- Homepage Content Start -->
+
+  <div class="ecategory">
+    <div class="container">
+      <h3 class="ecategory-title">{{'browseCategories'|translate}}</h3>
+      <div class="row">
+        <div  class="col-md-4 col-lg-3 sidebar-responsive" [class.active]="is_menu_opened">
+          <div class="ecategory__mob">
+            <h4 class="ecategory__mob-title">{{'browseCategories'|translate}}</h4>
+            <div (click)="openMenuBar()" class="ecategory__close" id="sidebarhide">
+              <svg class="icon ecategory__close-icon">
+                <use xlink:href="assets/Icons/sprite.svg#close-icon"></use>
+              </svg>
+            </div>
+          </div>
+
+
+          <div *ngFor="let catergory of catergoryData; let i = index" (click)="setIndex(i,catergory._id,'')" class="ecategory__list">
+            <a  class="ecategory__list-link" [class.active]="selectedIndex === i">{{catergory.name}}</a>
+          </div>
+          <!-- <div class="ecategory__close" id="sidebarhide">
+            <svg class="icon ecategory__close-icon">
+              <use xlink:href="assets/Icons/sprite.svg#close-icon"></use>
+            </svg>
+          </div> -->
+        </div>
+        <div class="col-md-8 col-lg-9">
+          <div class="ecategory__grid">
+
+            <div *ngIf="product_details && product_details.length==0">
+              <p>{{'NoItemsAvailable'|translate}}</p>
+
+            </div>
+
+            <div  *ngFor="let item of product_details; let i = index" (click)="viewItem(item._id)" class="ecard">
+              <div class="ecard-header">
+                
+                <a (click)="viewItem(item.id)">
+                  <img src="{{image_base_path}}{{item.images[0]?.image}}" alt="shoe img" class="ecard-header__img">
+                </a>
+              
+                <a (click)="viewItem(item.id)" class="ecard-favourite">
+                  <svg class="icon ecard-favourite__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#heart-outline"></use>
+                  </svg>
+                </a>
+
+                <div *ngIf="item['is_sold_out']" class="ecard-soldout">
+                  <p>Sold out 😐</p>
+                </div>
+
+
+                <!-- <a (click)="viewItem(item.id)" class="ecard-favourite">
+                 <div>dvsvsdv</div>
+                </a> -->
+
+
+
+                <div class="ecard-overlay"></div>
+                <a (click)="viewItem(item.id)" class="ecard-add">
+                  <svg class="icon ecard-add__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#eye"></use>
+                  </svg>
+                </a>
+              </div>
+
+
+
+              <div class="ecard-footer">
+                <p class="ecard-footer__title">{{item.name}}</p>
+                <div class="ecard-footer__price">
+                  <p *ngIf="item.is_discounted" class="ecard-footer__price-amount ecard-footer__price-amount--reduce">{{item.currency}} {{currencyFormatter(item.gross_amount)}}</p>
+                  <p class="ecard-footer__price-amount ecard-footer__price-amount--special">{{item.currency}} {{currencyFormatter(item.net_amount)}}</p>
+                </div>
+              </div>
+            </div>
+
+
+     
+
+            <!-- <div class="ecard">
+              <div class="ecard-header">
+                <a href="pages/view-page.html">
+                  <img src="assets/img/shoe-img-4.png" alt="shoe img" class="ecard-header__img">
+                </a>
+                <a href="#" class="ecard-favourite">
+                  <svg class="icon ecard-favourite__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#heart-outline"></use>
+                  </svg>
+                </a>
+                <div class="ecard-overlay"></div>
+                <a href="#" class="ecard-add">
+                  <svg class="icon ecard-add__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#plus"></use>
+                  </svg>
+                </a>
+             
+              </div>
+              <div class="ecard-footer">
+                <p class="ecard-footer__title">DIOR X AIR BLACK 001-105</p>
+                <div class="ecard-footer__price">
+                  <p class="ecard-footer__price-amount ecard-footer__price-amount--reduce">Rs. 17000.00</p>
+                  <p class="ecard-footer__price-amount ecard-footer__price-amount--special">Rs. 17000.00</p>
+                </div>
+              </div>
+            </div>
+            <div class="ecard">
+              <div class="ecard-header">
+                <a href="pages/view-page.html">
+                  <img src="assets/img/shoe-img-7.png" alt="shoe img" class="ecard-header__img">
+                </a>
+                <a href="#" class="ecard-favourite">
+                  <svg class="icon ecard-favourite__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#heart-outline"></use>
+                  </svg>
+                </a>
+                <div class="ecard-overlay"></div>
+                <a href="#" class="ecard-add">
+                  <svg class="icon ecard-add__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#plus"></use>
+                  </svg>
+                </a>
+ 
+              </div>
+              <div class="ecard-footer">
+                <p class="ecard-footer__title">DIOR X AIR BLACK 001-105</p>
+                <div class="ecard-footer__price">
+                  <p class="ecard-footer__price-amount ecard-footer__price-amount--reduce">Rs. 17000.00</p>
+                  <p class="ecard-footer__price-amount ecard-footer__price-amount--special">Rs. 17000.00</p>
+                </div>
+              </div>
+            </div>
+            <div class="ecard">
+              <div class="ecard-header">
+                <a href="pages/view-page.html">
+                  <img src="assets/img/shoe-img-10.png" alt="shoe img" class="ecard-header__img">
+                </a>
+                <a href="#" class="ecard-favourite">
+                  <svg class="icon ecard-favourite__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#heart-outline"></use>
+                  </svg>
+                </a>
+                <div class="ecard-overlay"></div>
+                <a href="#" class="ecard-add">
+                  <svg class="icon ecard-add__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#plus"></use>
+                  </svg>
+                </a>
+              
+              </div>
+              <div class="ecard-footer">
+                <p class="ecard-footer__title">DIOR X AIR BLACK 001-105</p>
+                <div class="ecard-footer__price">
+                  <p class="ecard-footer__price-amount ecard-footer__price-amount--reduce">Rs. 17000.00</p>
+                  <p class="ecard-footer__price-amount ecard-footer__price-amount--special">Rs. 17000.00</p>
+                </div>
+              </div>
+            </div>
+            <div class="ecard">
+              <div class="ecard-header">
+                <a href="pages/view-page.html">
+                  <img src="assets/img/shoe-img-2.png" alt="shoe img" class="ecard-header__img">
+                </a>
+                <a href="#" class="ecard-favourite">
+                  <svg class="icon ecard-favourite__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#heart-outline"></use>
+                  </svg>
+                </a>
+                <div class="ecard-overlay"></div>
+                <a href="#" class="ecard-add">
+                  <svg class="icon ecard-add__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#plus"></use>
+                  </svg>
+                </a>
+                <div class="ecard-sold">
+                  <p class="ecard-sold__text">Sold Out</p>
+                  <img src="assets/img/emoji.svg" alt="img" class="ecard-sold__img">
+                </div>
+              </div>
+              <div class="ecard-footer">
+                <p class="ecard-footer__title">DIOR X AIR BLACK 001-105</p>
+                <div class="ecard-footer__price">
+                  <p class="ecard-footer__price-amount">Rs. 17000.00</p>
+                </div>
+              </div>
+            </div>
+            <div class="ecard">
+              <div class="ecard-header">
+
+                <a href="pages/view-page.html">
+                  <img src="assets/img/shoe-img-5.png" alt="shoe img" class="ecard-header__img">
+                </a>
+                <a href="#" class="ecard-favourite">
+                  <svg class="icon ecard-favourite__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#heart-outline"></use>
+                  </svg>
+                </a>
+                <div class="ecard-overlay"></div>
+                <a href="#" class="ecard-add">
+                  <svg class="icon ecard-add__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#plus"></use>
+                  </svg>
+                </a>
+       
+              </div>
+              <div class="ecard-footer">
+                <p class="ecard-footer__title">DIOR X AIR BLACK 001-105</p>
+                <div class="ecard-footer__price">
+                  <p class="ecard-footer__price-amount">Rs. 17000.00</p>
+                </div>
+              </div>
+            </div>
+            <div class="ecard">
+              <div class="ecard-header">
+                <a href="pages/view-page.html">
+                  <img src="assets/img/shoe-img-8.png" alt="shoe img" class="ecard-header__img">
+                </a>
+                <a href="#" class="ecard-favourite">
+                  <svg class="icon ecard-favourite__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#heart-outline"></use>
+                  </svg>
+                </a>
+                <div class="ecard-overlay"></div>
+                <a href="#" class="ecard-add">
+                  <svg class="icon ecard-add__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#plus"></use>
+                  </svg>
+                </a>
+    
+              </div>
+              <div class="ecard-footer">
+                <p class="ecard-footer__title">DIOR X AIR BLACK 001-105</p>
+                <div class="ecard-footer__price">
+                  <p class="ecard-footer__price-amount">Rs. 17000.00</p>
+                </div>
+              </div>
+            </div>
+            <div class="ecard">
+              <div class="ecard-header">
+                <a href="pages/view-page.html">
+                  <img src="assets/img/shoe-img-11.png" alt="shoe img" class="ecard-header__img">
+                </a>
+                <a href="#" class="ecard-favourite">
+                  <svg class="icon ecard-favourite__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#heart-outline"></use>
+                  </svg>
+                </a>
+                <div class="ecard-overlay"></div>
+                <a href="#" class="ecard-add">
+                  <svg class="icon ecard-add__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#plus"></use>
+                  </svg>
+                </a>
+ 
+              </div>
+              <div class="ecard-footer">
+                <p class="ecard-footer__title">DIOR X AIR BLACK 001-105</p>
+                <div class="ecard-footer__price">
+                  <p class="ecard-footer__price-amount">Rs. 17000.00</p>
+                </div>
+              </div>
+            </div>
+            <div class="ecard">
+              <div class="ecard-header">
+                <a href="pages/view-page.html">
+                  <img src="assets/img/shoe-img-3.png" alt="shoe img" class="ecard-header__img">
+                </a>
+                <a href="#" class="ecard-favourite">
+                  <svg class="icon ecard-favourite__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#heart-outline"></use>
+                  </svg>
+                </a>
+                <div class="ecard-overlay"></div>
+                <a href="#" class="ecard-add">
+                  <svg class="icon ecard-add__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#plus"></use>
+                  </svg>
+                </a>
+        
+              </div>
+              <div class="ecard-footer">
+                <p class="ecard-footer__title">DIOR X AIR BLACK 001-105</p>
+                <div class="ecard-footer__price">
+                  <p class="ecard-footer__price-amount">Rs. 17000.00</p>
+                </div>
+              </div>
+            </div>
+            <div class="ecard">
+              <div class="ecard-header">
+                <a href="pages/view-page.html">
+                  <img src="assets/img/shoe-img-6.png" alt="shoe img" class="ecard-header__img">
+                </a>
+                <a href="#" class="ecard-favourite">
+                  <svg class="icon ecard-favourite__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#heart-outline"></use>
+                  </svg>
+                </a>
+                <div class="ecard-overlay"></div>
+                <a href="#" class="ecard-add">
+                  <svg class="icon ecard-add__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#plus"></use>
+                  </svg>
+                </a>
+            
+              </div>
+              <div class="ecard-footer">
+                <p class="ecard-footer__title">DIOR X AIR BLACK 001-105</p>
+                <div class="ecard-footer__price">
+                  <p class="ecard-footer__price-amount">Rs. 17000.00</p>
+                </div>
+              </div>
+            </div>
+            <div class="ecard">
+              <div class="ecard-header">
+                <a href="pages/view-page.html">
+                  <img src="assets/img/shoe-img-9.png" alt="shoe img" class="ecard-header__img">
+                </a>
+                <a href="#" class="ecard-favourite">
+                  <svg class="icon ecard-favourite__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#heart-outline"></use>
+                  </svg>
+                </a>
+                <div class="ecard-overlay"></div>
+                <a href="#" class="ecard-add">
+                  <svg class="icon ecard-add__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#plus"></use>
+                  </svg>
+                </a>
+             
+              </div>
+              <div class="ecard-footer">
+                <p class="ecard-footer__title">DIOR X AIR BLACK 001-105</p>
+                <div class="ecard-footer__price">
+                  <p class="ecard-footer__price-amount">Rs. 17000.00</p>
+                </div>
+              </div>
+            </div>
+            <div class="ecard">
+              <div class="ecard-header">
+                <a href="pages/view-page.html">
+                  <img src="assets/img/shoe-img-12.png" alt="shoe img" class="ecard-header__img">
+                </a>
+                <a href="#" class="ecard-favourite">
+                  <svg class="icon ecard-favourite__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#heart-outline"></use>
+                  </svg>
+                </a>
+                <div class="ecard-overlay"></div>
+                <a href="#" class="ecard-add">
+                  <svg class="icon ecard-add__icon">
+                    <use xlink:href="assets/Icons/sprite.svg#plus"></use>
+                  </svg>
+                </a>
+              
+              </div>
+              <div class="ecard-footer">
+                <p class="ecard-footer__title">DIOR X AIR BLACK 001-105</p>
+                <div class="ecard-footer__price">
+                  <p class="ecard-footer__price-amount">Rs. 17000.00</p>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <!-- <div *ngIf="item_count>10" class="te<xt-center mt-5">
+            <button class="ebtn__lg--secondary">{{'moreProducts'|translate}}</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Homepage Content End -->
+
+
+<app-footer [store_data]="store_data"></app-footer>

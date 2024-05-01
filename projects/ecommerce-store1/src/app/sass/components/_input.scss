@@ -1,0 +1,116 @@
+.einput-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 97%;
+    background-position-y: 15px;
+    border: 1px solid $color-gray-4;
+    border-radius: 0px;
+    margin-right: 12px;
+    padding: 1rem;
+    padding-right: 2rem;
+    @include font-style(16px, $weight-regular, $color-gray-2);
+}
+
+.echeckout-form {
+    margin-top: 28px;
+    @media only screen and (max-width: 767px) {
+        margin-top: 21px;
+    }
+    .form-row>[class*=col-] {
+        &:nth-child(odd) {
+            padding-right: 10px;
+            @media only screen and (max-width: 767px) {
+                padding-right: 5px;
+            }
+        }
+
+        &:nth-child(even) {
+            padding-left: 10px;
+            @media only screen and (max-width: 767px) {
+                padding-left: 5px;
+            }
+        }        
+    }
+
+    &__group {
+        margin-bottom: 15px;
+        @media only screen and (max-width: 767px) {
+            margin-bottom: 20px;
+        }
+    }
+
+    &__label {
+        @include font-style(16px, $weight-regular, $color-black);
+        line-height: 24px;
+        margin-bottom: 12px;
+    }
+
+    &__required {
+        @include font-style(16px, $weight-regular, $color-red);
+        line-height: 24px;
+    }
+    
+    &__input {
+        @include font-style(12px, $weight-regular, $color-black);
+        line-height: 18px;
+        border-radius: 0px;
+        border: 1px solid $color-border-2;
+        background-color: $color-input-bg;
+        height: 49px;
+        padding: 15px 11px;
+        &:focus {
+            box-shadow: none;
+            background-color: $color-input-bg;
+        }
+
+        &::placeholder {
+            color: $color-input-placeholder;
+            opacity: 1;
+         }
+           
+         &:-ms-input-placeholder {
+             color: $color-input-placeholder;
+           }
+           
+         &::-ms-input-placeholder {
+            color: $color-input-placeholder;
+         }
+    }
+
+    &__textarea {
+        @include font-style(12px, $weight-regular, $color-black);
+        line-height: 18px;
+        border-radius: 0px;
+        border: 1px solid $color-border-2;
+        background-color: $color-input-bg;
+        padding: 15px 11px;
+        &:focus {
+            box-shadow: none;
+            background-color: $color-input-bg;
+        }
+
+        &::placeholder {
+            color: $color-input-placeholder;
+            opacity: 1;
+         }
+           
+         &:-ms-input-placeholder {
+             color: $color-input-placeholder;
+           }
+           
+         &::-ms-input-placeholder {
+            color: $color-input-placeholder;
+         }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .col-md-6 {
+            -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    }
+}

@@ -1,0 +1,262 @@
+.esearch {
+    background-color: $color-gray-7;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    position: relative;
+    z-index: 20;
+    
+    &-group {
+        @include flex-container(row, null, center, center);
+        border-radius: 160px;
+    }
+
+    &-input {
+        background-color: $color-white;
+        padding: 16px 30px;
+        width: 100%;
+        border: none;
+        @include font-style(16px, $weight-regular, $color-black);
+        line-height: 24px;
+
+        @media only screen and (max-width: 767px) {
+            font-size: 12px;
+            line-height: 18px;
+            padding: 8px 15px;
+            border-radius: 160px 0 0 160px;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+           color: $color-gray-2;
+           opacity: 1;
+        }
+          
+        &:-ms-input-placeholder {
+            color: $color-gray-2;
+          }
+          
+        &::-ms-input-placeholder {
+           color: $color-gray-2;
+        }
+    }
+
+    &-btn {
+        &__category {
+            background-color: $color-orange;
+            padding: 16px 23px;
+            border: none;
+            border-radius: 160px 0 0 160px;
+            @include flex-container(row, null, center, center);
+            transition: all 0.5s;
+            width: 280px;
+            position: relative;
+            @media only screen and (max-width: 767px) {
+                display: none;
+            }
+            &:hover {
+                // opacity: .8;
+            }
+
+            &-text {
+                @include font-style(16px, $weight-regular, $color-white);
+                line-height: 24px;
+            }
+            &-icon {
+                height: 14px;
+                width: 20px;
+                fill: $color-white;
+                margin-left: 16px;
+
+                &.hide {
+                    display: none
+                }
+            }
+
+            &-cicon {
+                height: 14px;
+                width: 20px;
+                fill: $color-white;
+                margin-left: 16px;
+
+                &.hide {
+                    display: none
+                }
+            }
+        }
+
+        &__group {
+            @include flex-container(row, null, flex-start, center);
+            background-color: $color-white;
+            border-radius: 0px 160px 160px 0;
+        }
+
+        &__sort {
+            @include flex-container(row, null, flex-start, center);
+            border-left: 1px solid $color-gray-3;
+            padding: 16px 26px;
+            border-bottom: none;
+            border-top: none;
+            border-right: none;
+            background-color: $color-white;
+            transition: all 0.5s;
+            white-space: nowrap;
+            position: relative;
+            @media only screen and (min-width: 992px) {
+                width: 200px;
+            }
+
+            @media only screen and (max-width: 767px) {
+                padding: 11px 16px;
+                width: unset;
+            }
+            &-icon{
+                height: 18px;
+                width: 24px;
+                fill: $color-gray-2;
+                margin-right: 12px;
+
+                @media only screen and (max-width: 767px) {
+                    height: 12px;
+                    margin-right: 0px;
+                }
+             }
+
+            &-text {
+                @include font-style(16px, $weight-regular, $color-gray-2);
+                line-height: 24px;
+
+                @media only screen and (max-width: 767px) {
+                    display: none;
+                }
+            }
+
+            &:hover {
+                .esearch-btn__sort-icon {
+                    opacity: 0.8;
+                }
+
+                .esearch-btn__sort-text {
+                    opacity: 0.8;
+                }
+            }
+            
+        }   
+
+        &__search {
+            @include flex-container(row, null, flex-start, center);
+            padding: 16px 36px;
+            border-radius: 100px;
+            border: none;
+            background-color: $color-black;
+            transition: all 0.5s;
+            @media only screen and (max-width: 767px) {
+                padding: 9.5px 16px;
+            }
+            &-icon {
+                height: 16px;
+                width: 24px;
+                fill: $color-white;
+                margin-right: 10px;
+                @media only screen and (max-width: 767px) {
+                    margin-right: 4px;
+                    height: 12px;
+                }
+            }
+
+            &-text {
+                @include font-style(16px, $weight-regular, $color-white);
+                line-height: 24px;
+
+                @media only screen and (max-width: 767px) {
+                    font-size: 10px;
+                    line-height: 15px;
+                }
+            }
+            
+            &:hover {
+                opacity: 0.8;
+            }
+        }   
+    }    
+}
+
+// Sort Popover Style Start
+
+.esort-popover {
+    padding: 17px 20px;
+    background: $color-white;
+    box-shadow: 0px 4px 60px #DFE7F4;
+    border-radius: 10px;
+    width: 268px;
+    position: absolute;
+    top: 55px;
+    right: -65px;
+    z-index: 11;
+    text-align: left;
+    display:none;
+    &__title {
+        @include font-style(16px, $weight-medium, $color-black);
+        line-height: 24px;
+    }
+
+    &__list {
+        margin-top: 22px;
+        margin-bottom: 0px;
+    }
+
+    &__item {
+        padding-bottom: 15px;
+        padding-top: 15px;
+        &:not(:last-child) {
+            border-bottom: 1px solid $color-gray-4;
+        }
+
+        &:first-child {
+            padding-top: 0px;
+        }
+
+        &:last-child {
+            padding-bottom: 0px;
+        }
+    }
+
+    &__link {
+        @include font-style(14px, $weight-regular, $color-dark-blue);
+        line-height: 21px;
+        transition: all 0.5s;
+
+        &:hover {
+            opacity: .8;
+        }
+    }
+}
+
+.mt-top {
+    margin-top: 134px;
+
+    @media only screen and (max-width: 767px) {
+        margin-top: 111px;
+    }
+}
+// Sort Popover Style End
+
+.ecategory-popover {
+    background: $color-white;
+    border-radius: 10px;
+    width: 268px;
+    position: absolute;
+    top: 60px;
+    right: -97px;
+    z-index: 50;
+    text-align: left;
+    display:none;
+    border: none;
+
+    &:hover {
+        z-index: 50;
+        position: absolute;
+    }
+}

@@ -1,0 +1,12 @@
+.ecarousel {
+    margin-top: 18px;
+    position: relative;
+    .carousel-indicators {
+        margin-bottom: 0px;
+        li {
+            width: 8px;
+            height: 8px;
+            border-radius: 100%;
+        }
+    }
+}

@@ -1,0 +1,120 @@
+.scart-popover {
+    background: $color-white;
+    box-shadow: 0px 10px 60px #DFE7F4;
+    border-radius: 10px;
+    width: 419px;
+    position: absolute;
+    display: none;
+    top: 55px;
+    right: 0;
+    z-index: 11;
+
+    &__header {
+        padding: 17px 20px 20px;
+        @include flex-container(row, null, space-between, center);
+        &-title {
+            margin-bottom: 0px;
+            @include font-style(16px, $weight-medium, $color-black);
+            line-height: 24px;
+        }
+
+        &-icon {
+            width: 20px;
+            height: 16px;
+            fill: $color-dark-blue;
+        }
+    }
+
+    &__list {
+        margin-bottom: 0px;
+        height: 125px;
+        overflow: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    &__item {
+        @include flex-container(row, null, space-between, flex-start);
+
+        &:not(:last-child) {
+            margin-bottom: 16px;
+        }
+    
+
+        &-left {
+            @include flex-container(row, null, flex-start, center);
+        }
+
+        &-link {
+            transition: all 0.5s;
+
+            &:hover {
+                opacity: .7;
+            }
+        }
+
+        &-icon {
+            width: 20px;
+            height: 14px;
+            fill: $color-red;
+        }
+    }
+
+    &__img {
+        object-fit: cover;
+        width: 64px;
+        height: 53px;
+        border-radius: 6px;
+    }    
+
+    &__details {
+        margin-left: 12px;
+        &-title {
+            margin-bottom: 6px;
+            @include font-style(14px, $weight-regular, $color-dark-blue);
+            line-height: 21px;
+        }
+
+        &-price {
+            margin-bottom: 0px;
+            @include font-style(14px, $weight-regular, $color-orange);
+            line-height: 21px;
+        }
+
+        &-count {
+            margin-right: 10px;
+            @include font-style(14px, $weight-regular, $color-dark-blue);
+            line-height: 21px;
+        }
+    }
+
+    &__line {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    &__total {
+        padding-left: 20px;
+        padding-right: 20px;
+        @include flex-container(row, null, space-between, center);
+        &-title {
+            @include font-style(14px, $weight-regular, $color-black);
+            line-height: 21px;
+            margin-bottom: 0px;
+        }
+        &-amount {
+            margin-bottom: 0px;
+            @include font-style(16px, $weight-medium, $color-black);
+            line-height: 24px;
+        }
+    }
+
+    &__footer {
+        padding: 28px 20px 20px;
+        @include flex-container(row, null, flex-end, center);
+
+        .ebtn__sm--outline {
+            margin-right: 12px;
+        }
+    }
+}

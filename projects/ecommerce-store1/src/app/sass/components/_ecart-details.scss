@@ -1,0 +1,186 @@
+.ecart-info {
+    border: 1px solid $color-gray-4;
+    background-color: $color-gray-6;
+    padding: 32px;
+    @include flex-container(column, null, flex-start, flex-start);
+    @media only screen and (max-width: 992px) and (min-width: 768px) {
+       padding: 20px;
+    }
+    @media only screen and (max-width: 767px) {
+        margin-top: 37px;
+        padding: 13px 21px 28px;
+    }
+    &__title {
+        font-weight: $weight-medium;
+        color: $color-dark-blue;
+        &--main {
+            font-size: 22px;
+            line-height: 33px;
+            margin-bottom: 30px;
+            @media only screen and (max-width: 767px) {
+                font-size: 16px;
+                line-height: 24px;
+                margin-bottom: 25px;
+            }
+        }
+
+        &--sub {
+            font-size: 18px;
+            line-height: 27px;
+            margin-bottom: 16px;
+            @media only screen and (max-width: 767px) {
+                font-size: 14px;
+                line-height: 21px;
+                margin-bottom: 18px;
+            }
+        }
+    }
+
+    &__sub {
+        @include flex-container(row, null, space-between, center);
+        @media only screen and (max-width: 992px) and (min-width: 768px) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+
+        width: 100%;
+        margin-bottom: 21px;
+        &:last-of-type{
+            margin-bottom: 0px;
+        }
+        &-name {
+            @include font-style(18px, $weight-regular, $color-ecart-sub);
+            margin-bottom: 0px;
+            @media only screen and (max-width: 767px) {
+                font-size: 14px;
+                line-height: 21px;
+            }
+        }   
+        &-price {
+            @include font-style(18px, $weight-medium, $color-dark-blue);
+            line-height: 27px;
+            margin-bottom: 0px;
+            @media only screen and (max-width: 767px) {
+                font-size: 14px;
+                line-height: 21px;
+            }
+            &--main {
+                font-size: 20px;
+                line-height: 30px;
+                margin-bottom: 0px;
+                font-weight: $weight-bold;
+                @media only screen and (max-width: 767px) {
+                    font-size: 17px;
+                    line-height: 25.5px;
+                }
+            }
+        }
+
+        &--pay {
+            border-top: 1px solid $color-gray-4;
+            padding-top: 24px;
+            margin-top: 34px;
+        }
+
+    }
+
+    .ebtn__lg--primary {
+        margin-top: 45px;
+    }
+    .ebtn__lg--primary:disabled {
+        opacity: .5; }
+
+    &__payment {
+        padding: 16px 14px 16px 8px;
+        border: 1px solid $color-gray-4;
+        background-color: $color-white;
+        width: 100%;
+        margin-bottom: 10px;
+
+        &:last-of-type {
+            margin-bottom: 0px;
+        }
+
+        .echeckbox-group {
+            padding: 0px;
+            &__frimi {
+                object-fit: cover;
+                height: 18px;
+                width: 18px;
+                margin-left: 12px;
+            }
+
+            &__visa {
+                object-fit: cover;
+                height: 13px;
+                width: 45px;
+                margin-left: 12px;
+            }
+
+            &__text {
+                color: $color-dark-blue;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 992px) and (min-width: 768px) {
+        .ebtn__lg--primary  {
+            padding: 18px 19px;
+        }
+        .ebtn__lg--primary:disabled {
+            opacity: .5; }
+    }
+}
+
+.ecoupon {
+    @include flex-container(row, null, flex-start, center);
+    width: 100%;
+    padding: 57px 0 127px 0;
+    @media only screen and (max-width: 992px) and (min-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ebtn__lg--tertiary {
+        @media only screen and (max-width: 992px) and (min-width: 768px) {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        @media only screen and (max-width: 1199px) and (min-width: 993px) {
+            padding: 13px 24px;
+        }
+    }
+    
+    @media only screen and (max-width: 767px) {
+        padding: 40px 0 32.5px 0;
+    }
+    &__input {
+        width: 100%;
+        margin-right: 11px;
+        height: 100%;
+        padding: 13px 22px;
+        border: 1px solid $color-border;
+        @include font-style(16px, $weight-regular, $color-black);
+        @media only screen and (max-width: 767px) {
+            padding: 8px 22px;
+            font-size: 14px;
+        }
+        &:focus {
+            outline: none;
+        }
+        &::placeholder {
+            color: $color-gray-2;
+            opacity: 1;
+         }
+           
+         &:-ms-input-placeholder {
+             color: $color-gray-2;
+           }
+           
+         &::-ms-input-placeholder {
+            color: $color-gray-2;
+         }
+    }
+}

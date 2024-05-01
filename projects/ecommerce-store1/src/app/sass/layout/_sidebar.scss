@@ -1,0 +1,21 @@
+@media only screen and (max-width: 767px) {
+    .sidebar-responsive {
+        position: fixed;
+        margin-top: 0;
+        margin-bottom: 0;
+        top: 0;
+        left: -120%;
+        bottom: 0;
+        padding: 15px;
+        background-color: $color-white;
+        height: 100vh;
+        z-index: 1031;
+        width: 320px;
+        -webkit-transition: all 0.4s linear;
+        transition: all 0.4s linear;
+    }
+
+    .sidebar-responsive.active {
+        left: 0;
+    }
+}

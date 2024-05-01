@@ -1,0 +1,394 @@
+.eitem {
+    padding-bottom: 85px;
+    @media only screen and (max-width: 767px) {
+        padding-bottom: 60px;
+    }
+    
+    &__small,
+    &-details__icons-large {
+        display: none;
+    }
+
+    &__large,
+    &-details__icons-large {
+        display: block;
+    }
+
+    @media only screen and (max-width: 767px) {
+        .eitem {
+            &__small,
+            &-details__icons-large {
+                display: block;
+            }
+
+            &__large,
+            &-details__icons-large {
+                display: none;
+            }
+        }
+    }
+
+    &-main {
+        position: relative;
+
+        &__img {
+            height: 400px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 7px;
+        }
+
+        &__icon {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.78);
+            @include flex-container(row, null, center, center);
+            width: 55px;
+            height: 55px;
+            border-radius: 4px;
+            border: none;
+            bottom: 25px;
+            right: 25px;
+
+            &-expand {
+                width: 16px;
+                height: 16px;
+                fill: $color-black;
+            }
+        }
+    }
+
+    &-subs {
+        margin-top: 20px;
+        @include flex-container(row, null, space-between, center);
+
+        &__img {
+            width: calc(100%/3 - 20px);
+            height: 147px;
+            object-fit: cover;
+            border-radius: 7px;
+        }
+    }
+
+    &-details {
+        padding-left: 22px;
+        @media only screen and (max-width: 767px) {
+            padding-left: 0;
+        }
+        &__top {
+            @include flex-container(row, null, space-between, flex-start);
+            @media only screen and (max-width: 992px) and (min-width: 768px) {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        &__icons {
+            @include flex-container(row, null, flex-end, center);
+            @media only screen and (max-width: 992px) and (min-width: 768px) {
+                margin-top: 10px;
+            }
+        }
+
+        &__share {
+            width: 45px;
+            height: 45px;
+            background-color: $color-bg-1;
+            border-radius: 100px;
+            @include flex-container(row, null, center, center);
+            margin-right: 10px;
+            border: none;
+            transition: all 0.5s;
+            &-icon {
+                width: 20px;
+                height: 18px;
+                fill: $color-gray-2;
+            }
+
+            &:hover {
+                opacity: .7;
+            }
+        }
+
+        &__heart {
+            width: 45px;
+            height: 45px;
+            background-color: $color-bg-1;
+            border-radius: 100px;
+            @include flex-container(row, null, center, center);
+            border: none;
+            transition: all 0.5s !important;
+            &-icon {
+                width: 20px;
+                height: 18px;
+                fill: $color-gray-2;
+                transition: all 0.5;
+            }
+
+            &:hover {
+                background-color: $color-orange;
+                // transform: translateY(-5px);
+                transition: all 0.5;
+                .eitem-details__heart-icon {
+                    fill: $color-white;
+                }
+            }
+        }
+
+        &__description {
+            margin-top: 8px;
+            width: 370px;
+            margin-bottom: 29px;
+
+            @media only screen and (max-width: 767px) {
+                margin-top: 26px;
+                width: unset;
+                margin-bottom: 13px;
+            }
+            &-title {
+                @include font-style(35px, $weight-medium, $color-black);
+                line-height: 52.5px;
+                margin-bottom: 10px;
+                @media only screen and (max-width: 767px) {
+                    font-size: 25px;
+                    line-height: 37.5px;
+                }
+            }
+
+            &-category {
+                @include font-style(16px, $weight-regular, $color-gray-2);
+                line-height: 24px;
+                @media only screen and (max-width: 767px) {
+                    font-size: 14px;
+                    line-height: 21px;
+                }
+            }
+        }
+
+        &__amounts {
+            @include font-style(25px, $weight-medium, $color-orange);
+            line-height: 37.5px;
+            @media only screen and (max-width: 767px) {
+                font-size: 20px;
+                line-height: 30px;
+            }
+        }
+
+        &__line {
+            margin-top: 29.5px;
+            margin-bottom: 29.5px;
+            border-color: $color-gray-4;
+
+            @media only screen and (max-width: 767px) {
+                display: none;
+            }
+        }
+
+
+        &__size {
+            @include flex-container(row, null, flex-start, center);
+            @media only screen and (max-width: 767px) {
+                margin-top: 18px;
+            }
+
+            @media only screen and (max-width: 1199px) and (min-width: 768px) {
+                @include flex-container(column, null, flex-start, flex-start);
+            }
+
+            width: 100%;
+            &-text {
+                @include font-style(18px, $weight-regular, $color-black);
+                white-space: nowrap;
+                margin-bottom: 0px;
+                margin-right: 25px;
+                line-height: 27px;
+                @media only screen and (max-width: 1199px) and (min-width: 768px) {
+                    margin-bottom: 5px;
+                }
+            }
+        }
+
+        &__color {
+            @include flex-container(row, null, flex-start, center);
+            @media only screen and (max-width: 767px) {
+                margin-top: 26px;
+            }
+            width: 100%;
+            @media only screen and (max-width: 1199px) and (min-width: 768px) {
+                @include flex-container(column, null, flex-start, flex-start);
+            }
+            &-text {
+                @include font-style(18px, $weight-regular, $color-black);
+                margin-bottom: 0px;
+                margin-right: 25px;
+                line-height: 27px;
+                @media only screen and (max-width: 1199px) and (min-width: 768px) {
+                    margin-bottom: 5px;
+                }
+            }
+
+            &-list {
+                @include flex-container(row, null, flex-start, center);
+                margin-bottom: 0px;
+            }
+
+            &-item {
+                width: 38px;
+                height: 38px;
+                border-radius: 5px;
+                @include flex-container(row, null, center, center);
+
+                &:not(:last-child) {
+                    margin-right: 7px;
+                }
+
+                &--green {
+                    background-color: $color-type-1;
+                }
+
+                &--blue {
+                    background-color: $color-type-2;
+                }
+
+                &--red {
+                    background-color: $color-type-3;
+                }
+            }
+
+            &-icon {
+                width: 18px;
+                height: 18px;
+                fill: $color-white;
+            }
+
+            &-link {
+                
+            }
+        }
+
+
+    }
+
+    &-count {
+        margin-top: 40px;
+        @include flex-container(row, null, flex-start, center);
+        @media only screen and (max-width: 767px) {
+            margin-top: 0;
+        }
+        &__btn {
+            width: 53px;
+            height: 53px;
+            border-radius: 2px;
+            @include flex-container(row, null, center, center);
+            border: none;
+            background-color: $color-gray-5;
+            @media only screen and (max-width: 767px) {
+               width: 40px;
+               height: 40px; 
+            }
+            span {
+                font-size: 28px; 
+                line-height: normal;
+                @media only screen and (max-width: 767px) {
+                    font-size: 24px;
+                }
+            }
+
+            &.disabled {
+                color: $color-gray-1;
+                cursor: not-allowed;
+                background-color: $color-gray-6;
+            }
+        }
+
+        &__amount {
+            margin-bottom: 0px;
+            padding-left: 20px;
+            padding-right: 20px;
+            @include font-style(24px, $weight-regular, $color-black);
+            line-height: 36px;
+            @media only screen and (max-width: 767px) {
+                font-size: 20px;
+                line-height: 30px;
+            }
+        }
+    }
+
+    &-actions {
+        @include flex-container(row, null, flex-end, center);
+        margin-top: 18px;
+        @media only screen and (max-width: 767px) {
+            margin-top: 0px;
+        }
+    }
+}
+
+.eitem__small {
+    .ebreadcrumb {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .eitem-details__top {
+        .ebreadcrumb {
+            display: none;
+        }
+    }
+    
+
+    .eitem__small {
+        .ebreadcrumb {
+            display: block;
+        }
+    }
+
+    .eitem-details {
+        &__icons-small {
+        position: absolute;
+        top: 13px;
+        right: 17px;
+        }
+
+        &__share {
+            width: 35px;
+            height: 35px;
+            &-icon {
+                width: 16px;
+                height: 16px;
+                fill: $color-gray-2;
+            }
+
+            &:hover {
+                opacity: .7;
+            }
+        }
+
+        &__heart {
+            width: 35px;
+            height: 35px;
+            &-icon {
+                width: 16px;
+                height: 16px;
+                fill: $color-gray-2;
+                transition: all 0.5;
+            }
+
+            &:hover {
+                background-color: $color-orange;
+                // transform: translateY(-5px);
+                transition: all 0.5;
+                .eitem-details__heart-icon {
+                    fill: $color-white;
+                }
+            }
+        }
+
+    }
+}
+
+@media only screen and (max-width: 767px) {
+   .eitem-action {
+    @include flex-container(row, null, space-between, center);
+    margin-top: 41px;
+   }
+}

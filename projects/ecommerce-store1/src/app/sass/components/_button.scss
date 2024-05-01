@@ -1,0 +1,107 @@
+.ebtn {
+    &__sm {
+        &--outline {
+            @include font-style(12px, $weight-medium, $color-black);
+            border: 2px solid $color-black;
+            line-height: 18px;
+            padding: 10.5px 33px;
+            background-color: transparent;
+            transition: all 0.5s;
+            border-radius: 6px;
+
+            &:hover {
+                background-color: #f9f9f9;
+                opacity: .8;
+            }
+        }
+
+        &--primary {
+            @include font-style(12px, $weight-medium, $color-white);
+            border: 2px solid $color-black;
+            line-height: 18px;
+            padding: 10.5px 33px;
+            background-color: $color-black;
+            transition: all 0.5s;
+            border-radius: 6px;
+
+            &:hover {
+                opacity: .8;
+            }
+        }
+
+        &--secondary {
+
+        }
+    }
+
+    &__lg {
+        &--outline {
+            @include font-style(16px, $weight-medium, $color-black);
+            border: 2px solid $color-black;
+            line-height: 24px;
+            padding: 18px 49px;
+            background-color: transparent;
+            transition: all 0.5s;
+            border-radius: 6px;
+                
+            &:hover {
+                opacity: .8;
+            }
+        }
+
+        &--tertiary {
+            @include font-style(16px, $weight-medium, $color-white);
+            border: 2px solid $color-orange;
+            line-height: 24px;
+            padding: 13px 54px;
+            background-color: $color-orange;
+            transition: all 0.5s;
+            border-radius: 6px;
+            @media only screen and (max-width: 767px) {
+                padding: 6px 21px;
+                font-size: 13px;
+            }
+            &:hover {
+                opacity: .8;
+            }
+        }
+
+        &--primary {
+            @include font-style(16px, $weight-medium, $color-white);
+            border: 2px solid $color-black;
+            line-height: 24px;
+            padding: 18px 49px;
+            background-color: $color-black;
+            transition: all 0.5s;
+            border-radius: 6px;
+            @media only screen and (max-width: 767px) {
+                font-size: 14px;
+                line-height: 21px;
+                padding: 10.5px 32.5px;
+            }
+
+            &:hover {
+                opacity: .8;
+            }
+        }
+
+        &--secondary {
+            @include font-style(16px, $weight-medium, $color-dark-blue-2);
+            border: 2px solid $color-gray-6;
+            line-height: 24px;
+            padding: 12.5px 18.5px;
+            background-color: $color-gray-6;
+            transition: all 0.5s;
+            border-radius: 10px;
+            @media only screen and (max-width: 767px) {
+               font-size: 12px;
+               line-height: 18px;
+            }
+            
+            &:hover {
+                background-color: $color-gray-4;
+                opacity: .8;
+            }
+        }
+    }
+}

@@ -1,0 +1,76 @@
+
+ body{
+    font-family: "poppins",sans-serif;
+    zoom: 1 !important; 
+  -moz-transform: scale(1) !important; 
+  -moz-transform-origin: 0 0 !important;
+ }
+
+
+
+.redirectalign{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.galleryImg{
+    width: 70%;
+    display: flex;
+    align-items: flex-end;
+}
+
+
+
+.Redirecttext{
+    font-family: 'Poppins' !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 20px !important;
+    line-height: 30px !important;
+}
+
+.Redirecttext2{
+    font-family: 'Poppins' !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+}
+
+.Redirecttext3{
+    font-family: 'Poppins' !important;
+    font-style: normal !important;
+    font-weight: normal;
+    font-size: 14px !important;
+    line-height: 21px !important;
+}
+
+.imgmotion {
+    position: relative;
+    animation: myfirst 2s infinite;
+    animation-direction: linear;
+}
+  
+@keyframes myfirst {
+0%   {top: 0px;}
+
+100% {top: -20px;}
+}
+
+
+@keyframes zoominoutsinglefeatured {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.2,1.2);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+
+.cardcontainer img {
+	animation: zoominoutsinglefeatured 1s infinite ;
+}

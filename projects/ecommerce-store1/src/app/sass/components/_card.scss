@@ -1,0 +1,157 @@
+.ecard {
+    cursor: pointer;
+    transition: transform .5s ease;
+    &-header {
+        height: 196px;
+        width: 100%;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+
+        @media only screen and (max-width: 767px) {
+            height: 176px;
+        }
+        &__img {
+            object-fit: cover; 
+            height: 196px;
+            width: 100%;
+            border-radius: 5px;
+            max-width: 100%;
+            transition: transform .5s ease;
+            @media only screen and (max-width: 767px) {
+                height: 176px;
+            }
+        }
+    }
+
+    &-favourite {
+        background-color: $color-white;
+        height: 31px;
+        width: 31px;
+        border-radius: 100px;
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        transition: all 0.5s;
+        z-index: 10;
+        @include flex-container(row, null, center, center);
+        &__icon {
+            fill: $color-black;
+            width: 20px;
+            height: 12px;
+        }
+
+        &:hover {
+            background-color: $color-orange;
+            transform: translateY(-5px);
+            .ecard-favourite__icon {
+                fill: $color-white;
+            }
+        }
+    }
+
+    &-overlay {
+        position:absolute;
+        top:0;
+        left:0; 
+        width:100%;
+        height:100%;
+        background: rgba(255, 255, 255, 0.63);
+        transition: all 0.5s;
+        opacity:0;	
+        border-radius: 6px;
+        pointer-events: none;
+    }
+
+    &:hover {
+        .ecard-overlay {
+            backdrop-filter: blur(1px);
+            opacity: 7;
+            -webkit-transition: all 200ms ease-out; 
+               -moz-transition: all 200ms ease-out; 
+                 -o-transition: all 200ms ease-out; 
+                    transition: all 200ms ease-out;
+        }
+
+        .ecard-add {
+            opacity: 1;
+        }
+
+        .ecard-header__img {
+            transform: scale(1.2);
+        }
+    }
+
+    &-add {
+        position: absolute;
+        top: 50%;
+        left: 46%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        opacity:0;
+    }
+
+    .ecard-add__icon {
+        width: 33px;
+        height: 33px;
+    }
+
+
+    &-sold {
+        background: $color-gradient;
+        padding: 10px 20px;
+        @include flex-container(row, null, center, center);
+        border-radius: 0px 0px 10px 10px;
+        position: absolute;
+        top: 0;
+        left: 21px;
+        &__text {
+            @include font-style(16px, $weight-medium, $color-white);
+            line-height: 24px;
+            margin-bottom: 0px;
+            margin-right: 4px;
+        }
+
+        &__img {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    &-footer {
+        padding: 20px 0px;
+        @media only screen and (max-width: 767px) {
+            padding: 10px 0;
+        }
+        &__title {
+            @include font-style(16px, $weight-medium, $color-dark-blue);
+            line-height: 24px;
+            margin-bottom: 5px;
+            @media only screen and (max-width: 767px) {
+                font-size: 14px;
+                line-height: 21px;
+            }
+        }
+
+        &__price {
+            @include flex-container(row, null, flex-start, center);
+            &-amount {
+                @include font-style(18px, $weight-medium, $color-black);
+                line-height: 24px;
+                margin-bottom: 0px;
+                @media only screen and (max-width: 767px) {
+                    font-size: 12px;
+                    line-height: 18px;
+                }
+                &--reduce {
+                    text-decoration-line: line-through; 
+                }
+
+                &--special {
+                    color: $color-red;
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+}
